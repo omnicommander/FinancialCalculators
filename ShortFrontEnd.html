@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" />
+	<script src="main.js" type="text/javascript"></script>
+	<script src="Validation.js" type="text/javascript"></script>
+	<script src="Calculator.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<link href="Style.css" rel="stylesheet">
+	<html lang="en">
+	<title>Short Version</title>
+</head>
+<style>
+</style>
+<body>
+	<h1 style="margin-left: 10px;">Calculators</h1>
+	<hr>
+	<!-- How much can I afford? -->
+	<button class="calc-btn" data-toggle="modal" data-target="#modal1">Calculate Your Loan</button>
+	<!-- How much is my payment? -->
+	<button class="calc-btn" data-toggle="modal" data-target="#modal2">Calculate Your Payment</button>
+	<!-- Modal number 1 -->
+	<div class="modal fade modal-style modal-background"  id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalTitle1" aria-hidden="true">
+		<div class="modal-dialog" role="document"></div>
+			<div class="modal-content ">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle1">How Much Loan Can I Afford?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<span class="sub-span">Enter desired payment, rate and, term and select frequency; Click Compute and the loan total will be calculated for you.</span>
+					<div class="form-row">
+						<label>Desired Payment:</label>
+						<input
+							class="slider"
+							type="range"
+							id="loanAffordPayment"
+							value="50"
+							min="0" max="100000"
+							oninput="document.getElementById('dPayment').innerHTML = '$' + this.value"
+						/>
+						<label id="dPayment"></label>
+					</div>
+					<div class="form-row">
+						<label>Annual Percentage Rate:</label>
+						<input
+							class="slider"
+							type="range"
+							id="loanAffordRate"
+							value="0"
+							min="0"
+							max="25"
+							oninput="document.getElementById('APR').innerHTML = this.value + `%`"
+						/>
+						<label id="APR"></label>
+					</div>
+					<div class="form-row">
+						<label>Length of Loan:</label>
+						<input
+							class="slider"
+							type="range"
+							id="loanAffordMonths"
+							value="0"
+							min="0"
+							max="100"
+							onchange="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`"
+						/>
+						<label id="lengthLoan"></label>
+					</div>
+					<div class="form-row">
+						<label>Select loan frequency:</label>
+						<select id="loanAffordFrequency" aria-label="Dropdown for Months or Years">
+							<option value="12" selected="selected">Months </option>
+							<option value="1">Years </option>
+						</select>
+					</div>
+
+					<div class="form-row mt-4">
+						<div class="full-wrap">
+							<input id="find"
+								class="compute calc-button"
+								type="button"
+								class="calc-button"
+								value="Compute"
+								onclick="validateFormLoanAfford()"
+							/>
+							<input
+								type="button"
+								value="Reset"
+								class="calc-button reset"
+								onclick="resetDesiredPayment()" />
+						</div>
+					</div>
+					<hr />
+					<div class="form-row">
+						<label for="amount">Loan Amount:</label>
+						<span>
+							$<input
+								id="loanAffordAmount"
+								value="0"
+								type="number"
+								autocomplete="off"
+								min="1"
+								step="0.01"
+								placeholder="0.00"
+								aria-label="Loan Amount"
+							/>
+						</span>
+					</div>
+					<p class="small">
+						*The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	<!-- Modal number 2 -->
+		<div class="modal fade modal-style modal-background" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modalTitle2" aria-hidden="true">
+			<div class="modal-dialog" role="document"></div>
+			<div class="modal-content ">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle2">What is my payment?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<span class="sub-span">Enter loan amount, rate and the term; the loan payment will be calculated for you.</span>
+					<div class="form-row">
+						<label>Loan Amount:</label>
+						<input class="slider" type="range" id="loanPaymentAmount" value="0" min="0" max="1000000" oninput="document.getElementById('loanAmount').innerHTML = '$' + this.value" />
+						<label id="loanAmount"></label>
+					</div>
+					<div class="form-row">
+						<label>Annual Percentage Rate:</label>
+						<input class="slider" type="range" id="loanPaymentRate" value="0" min="0" max="100" oninput="document.getElementById('paymentRate').innerHTML = this.value + `%`" />
+						<label id="paymentRate"></label>
+					</div>
+					<div class="form-row">
+						<label>Length of Loan:</label>
+						<input class="slider" type="range" id="loanPaymentMonths" value="0" min="0" max="100" oninput="document.getElementById('loanLength').innerHTML = this.value + ` ` + `months/years` " />
+						<label id="loanLength"></label>
+					</div>
+					<div class="form-row">
+						<label>Select loan frequency:</label>
+						<select id="loanPaymentFrequency" aria-label="Dropdown for Months or Years">
+							<option value="12" selected="selected">Months </option>
+							<option value="1">Years </option>
+						</select>
+					</div>
+
+					<div class="form-row mt-4">
+						<div class="full-wrap">
+							<input id="find" class="compute calc-button" type="button" class="calc-button" value="Compute" onclick="validateFormLoanPayment()" />
+							<input type="button" value="Reset" class="calc-button reset" onclick="resetLoanPayment()" />
+						</div>
+					</div>
+					<hr />
+					<div class="form-row">
+						<label for="amount">Loan Payment Amount:</label>
+						<span>
+							$<input id="loanPaymentPayment" value="0" type="number" autocomplete="off" min="1" step="0.01" placeholder="0.00" aria-label="Loan Payment Amount" />
+						</span>
+					</div>
+					<p class="small">
+						*The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
