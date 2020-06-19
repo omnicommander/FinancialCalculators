@@ -277,7 +277,7 @@ hr {
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #4CAF50;
+  background: blue;
   cursor: pointer;
 }
 
@@ -285,12 +285,12 @@ hr {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #4CAF50;
+  background: blue;
   cursor: pointer;
 }
 
 .dropbtn {
-  background-color: #4CAF50;
+  background-color: blue;
   color: white;
   padding: 16px;
   font-size: 16px;
