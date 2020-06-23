@@ -102,7 +102,7 @@ $('.calc-button').on('click', function () {
 //********** PAYMENT GRAPH ***************
 $('.loanPayCalc').on('click', function () {
 	console.log("here");
-	var ctx = document.getElementById('loanChart').getContext('2d');
+	var ctx = document.getElementById('paymentChart').getContext('2d');
 	var totalLoan = document.getElementById("loanPaymentAmount").value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
 	var apr = document.getElementById("loanPaymentRate").value / 100;
 	var lengthLoan = document.getElementById("loanPaymentMonths").value;
@@ -202,7 +202,7 @@ $('.loanPayCalc').on('click', function () {
 //********** MORTGAGE REFINANCE GRAPH ***********
 
 $('.refinanceCalc').on('click', function () {
-	var ctx = document.getElementById('mortgageChart').getContext('2d');
+	var ctx = document.getElementById('refinanceChart').getContext('2d');
 	var principal = document.getElementById("mortgageRefinancePrincipal").value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
 	var monthly = document.getElementById("mortgageRefinancePayment").value;
 	var interest = document.getElementById("mortgageRefinanceIntRate").value;
@@ -285,7 +285,7 @@ $('.refinanceCalc').on('click', function () {
 //********** BIWEEKLY GRAPH ***********/
 
 $('.biweeklyCalc').on('click', function () {
-	var ctx = document.getElementById('mortgageChart').getContext('2d');
+	var ctx = document.getElementById('biweeklyChart').getContext('2d');
 	var mortPrincipal = document.getElementById("mortPayPrinc").value;
 	var mortMonthlyPayment = document.getElementById("mortPayPay").value;
 	var mortIntRate = document.getElementById("mortPayIntRate").value;
@@ -342,7 +342,7 @@ $('.savingsCalc').on('click', function () {
 	var ctx = document.getElementById('savingsChart').getContext('2d');
 	var initialInvestment = document.getElementById("multiPrincipal");
 	var addMonthly = document.getElementById("multiDepositMonthly");
-	var annualInt = doucment.getElementById("multiDepoInt");
+	var annualInt = document.getElementById("multiDepoInt");
 	var yearsAccrue = document.getElementById("multiDepoPay");
 	var futureVal = document.getElementById("multipleDepositFv");
 	var intEarned = document.getElementById("multipleDepositTotalint");
@@ -411,7 +411,7 @@ $('.savingsCalc').on('click', function () {
 //********** FUTURE VALUE GRAPH ***********/
 
 $('.futureValCalc').on('click', function () {
-	var ctx = document.getElementById('futureValChart').getContext('2d');
+	var ctx = document.getElementById('futureChart').getContext('2d');
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'line',
@@ -422,7 +422,7 @@ $('.futureValCalc').on('click', function () {
 				label: 'test',
 				backgroundColor: 'rgb(255, 99, 132)',
 				borderColor: 'rgb(255, 99, 132)',
-				data: test
+				data: initialInvestment
 			}, ]
 		},
 
