@@ -11,6 +11,8 @@
 	<link href="Style.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 	<html lang="en">
 	<title>Short Version</title>
 </head>
@@ -24,7 +26,6 @@
 			<h1 style="margin-left: 10px;"> Calculators</h1>
 			<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 			<div class="row">
-				
 					<div class="col-md-4 col-md-offset-1 col-12 text-center">
 						<div class="card item-card card-block">
 						  <img class = "card-img img-fluid" src="https://resize.hswstatic.com/w_907/gif/loan-personal.jpg" alt="Photo of sunset">
@@ -51,7 +52,6 @@
 					</div>	
 				</div>
 				<div class="row">
-					
 					<div class="col-md-4 col-md-offset-1 col-12 text-center">
 						<div class="card item-card card-block">
 						  <img class = "card-img img-fluid" src="https://www.developmentaid.org/api/frontend/cms/uploadedImages/2018/06/256.jpg" alt="Photo of sunset">
@@ -60,7 +60,6 @@
 							  <button class="calc-btn btn btn-primary" data-toggle="modal" data-target="#modal4">Your Biweekly Mortgage Payment</button>
 						</div>
 					</div>
-
 					<div class="col-md-4 col-md-offset-1 col-12 text-center">
 						<div class="card item-card card-block">
 						  <img class = "card-img img-fluid" src="https://commercebankwyoming.com/Portals/0/EasyGalleryImages/1688/ImageSlider/Thumbs/iStock585090668.jpg" alt="Photo of sunset">
@@ -69,8 +68,6 @@
 							  <button class="calc-btn btn btn-primary" data-toggle="modal" data-target="#modal5">Your Savings</button>
 						</div>
 					</div>
-
-					
 					<div class="col-md-4 col-md-offset-1 col-12 text-center">
 						<div class="card item-card card-block">
 						  <img class = "card-img img-fluid" src="https://cdn.educba.com/academy/wp-content/uploads/2019/02/Present-Value-vs-Future-Value.jpg" alt="Photo of sunset">
@@ -99,7 +96,27 @@
                 
 				<div class="modal-body">
 					<span class="sub-span">Enter desired payment, rate and, term and select frequency; Click Compute and the loan total will be calculated for you.</span>
-					<div class="form-row">
+					<!-- Default checked -->
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" id="customSwitch1">
+						<label class="custom-control-label" for="customSwitch1">Show input fields</label>
+					</div>
+										
+					<div class="container input-field">
+						<div class="row">
+							<div class = "col-md-4">
+								<form>
+									<label for="loanAffordPayment">Desired Payment:</label>
+									<input type="text" id="loanAffordPayment" name="loanAffordPayment"  oninput="document.getElementById('dPayment').innerHTML = '$' + this.value"><br><br>
+									<label for="loanAffordRate">Annual Percentage Rate:</label>
+									<input type="text" id="loanAffordRate" name="loanAffordRate" oninput="document.getElementById('APR').innerHTML = this.value + `%`"><br><br>
+									<label for="loanAffordMonths">Length of Loan:</label>
+									<input type="text" id="loanAffordMonths" name="loanAffordMonths"  oninput="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`"><br><br>
+								  </form>
+							</div>
+						</div>
+					</div>
+					<div class="form-row payment-slider">
 						<label>Desired Payment:</label>
 						<input
 							class="slider"
@@ -111,7 +128,7 @@
 						/>
 						<label id="dPayment"></label>
 					</div>
-					<div class="form-row">
+					<div class="form-row payment-slider">
 						<label>Annual Percentage Rate:</label>
 						<input
 							class="slider"
@@ -124,7 +141,7 @@
 						/>
 						<label id="APR"></label>
 					</div>
-					<div class="form-row">
+					<div class="form-row payment-slider">
 						<label>Length of Loan:</label>
 						<input
 							class="slider"

@@ -365,8 +365,8 @@ hr {
 	height: 80px;
 }
 
-.card::before,
-.card::after {
+.col-md-4 .card::before,
+.col-md-4 .card::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -378,10 +378,10 @@ hr {
 	content: '';
 	pointer-events: none;
 }
-.card::before {
+.col-md-4 .card::before {
 	transform-origin: left top;
 }
-.card::after {
+.col-md-4 .card::after {
 	transform-origin: right bottom;
 }
 .card:hover::before,
