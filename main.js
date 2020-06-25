@@ -342,8 +342,8 @@ $('.biweeklyCalc').on('click', function() {
 				},
 				{
 					label: 'Savings with Biweekly Interest',
-					backgroundColor: 'rgb(255, 99, 132)',
-					borderColor: 'rgb(255, 99, 132)',
+					backgroundColor: 'rgb(30, 205, 59)',
+					borderColor: 'rgb(30, 205, 59)',
 					data: biweeklySavingsArray
 				}
 			]
@@ -442,6 +442,22 @@ $('.savingsCalc').on('click', function() {
 
 $('.futureValCalc').on('click', function() {
 	var ctx = document.getElementById('futureChart').getContext('2d');
+	var deposit = document.getElementById("singleDepoPrincipal").value;
+	var annInt = document.getElementById("singleDepoInt").value;
+	var yearAccrue = document.getElementById("singleDepoPay").value;
+	var futureValue = document.getElementById("singleDepositFv").value;
+	var interestEarned = document.getElementById("singleDepositTotalint").value;
+	var depositArray = new Array();
+	var annIntArray = new Array();
+	var accrueArray = new Array();
+	var futValArray = new Array();
+	var intEarnedArray = new Array();
+	for (var i = 0; i < yearsAccrue; i++) {
+		depositArray[i] = deposit;
+		accrueArray[i] = yearAccrue;
+		futValArray[i] = futureValue;
+		intEarnedArray[i] = interestEarned;
+	}
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'line',
@@ -463,10 +479,28 @@ $('.futureValCalc').on('click', function() {
 			],
 			datasets: [
 				{
-					label: 'test',
+					label: 'Deposit Amount',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
-					data: initialInvestment
+					data: depositArray
+				},
+				{
+					label: 'Years to Accrue',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: accrueArray
+				},
+				{
+					label: 'Future Value of Investment',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: futValArray
+				},
+				{
+					label: 'Total Interest Earned',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: intEarnedArray
 				}
 			]
 		},
