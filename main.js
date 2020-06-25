@@ -5,7 +5,7 @@ function resetDesiredPayment() {
 	document.getElementById('loanAffordPayment').value = 0;
 	document.getElementById('lengthLoan').innerHTML = '0 months/years';
 	document.getElementById('APR').innerHTML = '0%';
-	document.getElementById('dPayment').innerHTML = '$0'
+	document.getElementById('dPayment').innerHTML = '$0';
 }
 
 function resetLoanPayment() {
@@ -15,20 +15,20 @@ function resetLoanPayment() {
 	document.getElementById('loanPaymentPayment').value = 0;
 	document.getElementById('loanLength').innerHTML = '0 months/years';
 	document.getElementById('paymentRate').innerHTML = '0%';
-	document.getElementById('loanAmount').innerHTML = '$0'
+	document.getElementById('loanAmount').innerHTML = '$0';
 }
 //********** LOAN GRAPH ***************/
-$('.calc-button').on('click', function () {
-	console.log("here");
+$('.calc-button').on('click', function() {
+	console.log('here');
 	var ctx = document.getElementById('loanChart').getContext('2d');
-	var sumLoan = document.getElementById("loanAffordAmount").value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
-	var apr = document.getElementById("loanAffordRate").value / 100;
-	var lengthLoan = document.getElementById("loanAffordMonths").value;
-	var desiredPayment = document.getElementById("loanAffordPayment").value;
+	var sumLoan = document.getElementById('loanAffordAmount').value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
+	var apr = document.getElementById('loanAffordRate').value / 100;
+	var lengthLoan = document.getElementById('loanAffordMonths').value;
+	var desiredPayment = document.getElementById('loanAffordPayment').value;
 
-	var breakdownInterest = (apr / lengthLoan) * desiredPayment; //yearly interest on loan
+	var breakdownInterest = apr / lengthLoan * desiredPayment; //yearly interest on loan
 	var totalInterest = breakdownInterest * lengthLoan;
-	var monthlyPayment = (breakdownInterest / 12) + (sumLoan / lengthLoan); //wrong formula
+	var monthlyPayment = breakdownInterest / 12 + sumLoan / lengthLoan; //wrong formula
 	var test = 3;
 	var interestArray = new Array();
 	var totalInterestArray = new Array();
@@ -41,7 +41,7 @@ $('.calc-button').on('click', function () {
 		lengthArray[i] = i;
 		interestArray[i] = totalInterest;
 		totalInterestArray[i] = totalInterest * i;
-		remainingBalance[i] = (sumLoan - monthlyPayment);
+		remainingBalance[i] = sumLoan - monthlyPayment;
 		sumLoan = remainingBalance[i];
 		lengthArray[i] = lengthArray[i] + 1;
 		monthlyArray[i] = monthlyPayment;
@@ -53,7 +53,8 @@ $('.calc-button').on('click', function () {
 		// The data for our dataset
 		data: {
 			labels: lengthArray,
-			datasets: [{
+			datasets: [
+				{
 					label: 'Total Interest Paid',
 					backgroundColor: 'rgb(30, 205, 59)',
 					borderColor: 'rgb(30, 205, 59)',
@@ -80,47 +81,48 @@ $('.calc-button').on('click', function () {
 					borderColor: 'rgb(255, 99, 132)',
 					fill: false,
 					data: remainingBalance
-				},
+				}
 			]
 		},
 
 		// Configuration options go here
 		options: {
 			scales: {
-				yAxes: [{
-					ticks: {
-						suggestedMin: 50,
-						suggestedMax: 100
+				yAxes: [
+					{
+						ticks: {
+							suggestedMin: 50,
+							suggestedMax: 100
+						}
 					}
-				}]
+				]
 			}
 		}
 	});
 });
 
-
 //********** PAYMENT GRAPH ***************
-$('.loanPayCalc').on('click', function () {
-	console.log("here");
+$('.loanPayCalc').on('click', function() {
+	console.log('here');
 	var ctx = document.getElementById('paymentChart').getContext('2d');
-	var totalLoan = document.getElementById("loanPaymentAmount").value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
-	var apr = document.getElementById("loanPaymentRate").value / 100;
-	var lengthLoan = document.getElementById("loanPaymentMonths").value;
-	var payment = document.getElementById("loanPaymentPayment").value;
+	var totalLoan = document.getElementById('loanPaymentAmount').value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
+	var apr = document.getElementById('loanPaymentRate').value / 100;
+	var lengthLoan = document.getElementById('loanPaymentMonths').value;
+	var payment = document.getElementById('loanPaymentPayment').value;
 	var temp = totalLoan;
 	var actualTotal = payment * lengthLoan;
-	console.log("OVERALL TOTAL: " + actualTotal);
+	console.log('OVERALL TOTAL: ' + actualTotal);
 
-	var breakdownInterest = (apr / lengthLoan) * totalLoan; //yearly interest on loan
+	var breakdownInterest = apr / lengthLoan * totalLoan; //yearly interest on loan
 	var totalInterest = breakdownInterest * lengthLoan;
-	var monthlyPayment = breakdownInterest / 12 + (totalLoan / lengthLoan); //wrong formula
-	console.log("Monthly Interest: " + breakdownInterest);
-	console.log("Monthly Payment: " + monthlyPayment);
-	console.log("Total Interest on Loan: " + totalInterest);
-	console.log("Yearly Interest: " + breakdownInterest);
-	console.log("Total Loan: " + totalLoan);
-	console.log("APR: " + apr);
-	console.log("Loan Length: " + lengthLoan);
+	var monthlyPayment = breakdownInterest / 12 + totalLoan / lengthLoan; //wrong formula
+	console.log('Monthly Interest: ' + breakdownInterest);
+	console.log('Monthly Payment: ' + monthlyPayment);
+	console.log('Total Interest on Loan: ' + totalInterest);
+	console.log('Yearly Interest: ' + breakdownInterest);
+	console.log('Total Loan: ' + totalLoan);
+	console.log('APR: ' + apr);
+	console.log('Loan Length: ' + lengthLoan);
 	var interestArray = new Array();
 	var totalInterestArray = new Array();
 	var remainingBalance = new Array();
@@ -132,26 +134,27 @@ $('.loanPayCalc').on('click', function () {
 		interestArray[i] = breakdownInterest;
 		lengthArray[i] = i;
 		totalInterestArray[i] = totalInterest;
-		remainingBalance[i] = (temp - monthlyPayment);
+		remainingBalance[i] = temp - monthlyPayment;
 		temp = remainingBalance[i];
 		monthlyArray[i] = payment;
 		overallPaymentArray[i] = actualTotal;
 	}
-	console.log("Interest Array: " + interestArray);
-	console.log("Remaining Balance: " + remainingBalance);
-	//var balance = totalLoan - principal;                                                            
+	console.log('Interest Array: ' + interestArray);
+	console.log('Remaining Balance: ' + remainingBalance);
+	//var balance = totalLoan - principal;
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'line',
 		// The data for our dataset
 		data: {
 			labels: lengthArray,
-			datasets: [{
+			datasets: [
+				{
 					label: 'Monthly Interest',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
-					pointColor: "#da3e2f",
-					strokeColor: "#da3e2f",
+					pointColor: '#da3e2f',
+					strokeColor: '#da3e2f',
 					fill: false,
 					data: interestArray
 				},
@@ -182,42 +185,44 @@ $('.loanPayCalc').on('click', function () {
 					borderColor: 'rgb(255, 99, 132)',
 					fill: false,
 					data: remainingBalance
-				},
+				}
 			]
 		},
 
 		// Configuration options go here
 		options: {
 			scales: {
-				yAxes: [{
-					ticks: {
-						suggestedMin: 50,
-						suggestedMax: 100
+				yAxes: [
+					{
+						ticks: {
+							suggestedMin: 50,
+							suggestedMax: 100
+						}
 					}
-				}]
+				]
 			}
 		}
 	});
 });
 //********** MORTGAGE REFINANCE GRAPH ***********
 
-$('.refinanceCalc').on('click', function () {
+$('.refinanceCalc').on('click', function() {
 	var ctx = document.getElementById('refinanceChart').getContext('2d');
-	var principal = document.getElementById("mortgageRefinancePrincipal").value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
-	var monthly = document.getElementById("mortgageRefinancePayment").value;
-	var interest = document.getElementById("mortgageRefinanceIntRate").value;
-	var refinanceInt = document.getElementById("mortgageRefinanceIntRate2").value;
-	var yearsRefinance = document.getElementById("mortgageRefinanceNper2").value;
-	var closingCosts = document.getElementById("mortgageRefinanceClosingCost").value;
+	var principal = document.getElementById('mortgageRefinancePrincipal').value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
+	var monthly = document.getElementById('mortgageRefinancePayment').value;
+	var interest = document.getElementById('mortgageRefinanceIntRate').value;
+	var refinanceInt = document.getElementById('mortgageRefinanceIntRate2').value;
+	var yearsRefinance = document.getElementById('mortgageRefinanceNper2').value;
+	var closingCosts = document.getElementById('mortgageRefinanceClosingCost').value;
 
-	var test = document.getElementById("mortgageRefinancePayment2").innerText;
-	var payoffClosing = document.getElementById("mortgageRefinanceCloseMo").value;
-	var currentPlanTotalInterest = document.getElementById("mortgageRefinanceOrigInt").value;
-	var refinanceTotalInterest = document.getElementById("mortgageRefinanceTotInt2").value;
-	var interestSaved = document.getElementById("mortgageRefinanceIntSave").value;
-	var netSavings = document.getElementById("mortgageRefinanceNetSave").value;
-	console.log("refinance payment: " + test);
-	console.log("closing cost time: " + payoffClosing);
+	var test = document.getElementById('mortgageRefinancePayment2').innerText;
+	var payoffClosing = document.getElementById('mortgageRefinanceCloseMo').value;
+	var currentPlanTotalInterest = document.getElementById('mortgageRefinanceOrigInt').value;
+	var refinanceTotalInterest = document.getElementById('mortgageRefinanceTotInt2').value;
+	var interestSaved = document.getElementById('mortgageRefinanceIntSave').value;
+	var netSavings = document.getElementById('mortgageRefinanceNetSave').value;
+	console.log('refinance payment: ' + test);
+	console.log('closing cost time: ' + payoffClosing);
 
 	var length = new Array();
 	var preRefinancePayment = new Array();
@@ -233,11 +238,11 @@ $('.refinanceCalc').on('click', function () {
 		currentPlanTotalIntArray[i] = currentPlanTotalInterest;
 		refinanceTotalIntArray[i] = refinanceTotalInterest;
 	}
-	console.log("Length: " + length);
-	console.log("Pre-refinance payment: " + preRefinancePayment);
-	console.log("Refinance payment: " + refinancePaymentArray);
-	console.log("Pre Refinance Interest: " + currentPlanTotalIntArray);
-	console.log("Post Refinance Interest: " + refinanceTotalIntArray);
+	console.log('Length: ' + length);
+	console.log('Pre-refinance payment: ' + preRefinancePayment);
+	console.log('Refinance payment: ' + refinancePaymentArray);
+	console.log('Pre Refinance Interest: ' + currentPlanTotalIntArray);
+	console.log('Post Refinance Interest: ' + refinanceTotalIntArray);
 
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
@@ -245,7 +250,8 @@ $('.refinanceCalc').on('click', function () {
 		// The data for our dataset
 		data: {
 			labels: length,
-			datasets: [{
+			datasets: [
+				{
 					label: 'Monthly Payment before Refinance',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
@@ -253,27 +259,26 @@ $('.refinanceCalc').on('click', function () {
 					data: preRefinancePayment
 				},
 				{
-					label: "Refinance Payment",
+					label: 'Refinance Payment',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
 					fill: false,
 					data: refinancePaymentArray
 				},
 				{
-					label: "Current Plan Total Interest",
+					label: 'Current Plan Total Interest',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
 					fill: false,
 					data: currentPlanTotalIntArray
 				},
 				{
-					label: "Refinance Plan Total Interest",
+					label: 'Refinance Plan Total Interest',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
 					fill: false,
 					data: refinanceTotalIntArray
-				},
-
+				}
 			]
 		},
 
@@ -284,14 +289,14 @@ $('.refinanceCalc').on('click', function () {
 
 //********** BIWEEKLY GRAPH ***********/
 
-$('.biweeklyCalc').on('click', function () {
+$('.biweeklyCalc').on('click', function() {
 	var ctx = document.getElementById('biweeklyChart').getContext('2d');
-	var mortPrincipal = document.getElementById("mortPayPrinc").value;
-	var mortMonthlyPayment = document.getElementById("mortPayPay").value;
-	var mortIntRate = document.getElementById("mortPayIntRate").value;
-	var currentTotalInterest = document.getElementById("mortgagePaymentOrigInt").value;
-	var biweeklyTotalInterest = document.getElementById("mortgagePaymentBiwkInt").value;
-	var biweeklyIntSavings = document.getElementById("mortgagePaymentIntSave").value;
+	var mortPrincipal = document.getElementById('mortPayPrinc').value;
+	var mortMonthlyPayment = document.getElementById('mortPayPay').value;
+	var mortIntRate = document.getElementById('mortPayIntRate').value;
+	var currentTotalInterest = document.getElementById('mortgagePaymentOrigInt').value;
+	var biweeklyTotalInterest = document.getElementById('mortgagePaymentBiwkInt').value;
+	var biweeklyIntSavings = document.getElementById('mortgagePaymentIntSave').value;
 
 	var currentIntArray = new Array();
 	var biweeklyIntArray = new Array();
@@ -303,14 +308,27 @@ $('.biweeklyCalc').on('click', function () {
 		biweeklySavingsArray[i] = biweeklyIntSavings;
 	}
 
-
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'line',
 		// The data for our dataset
 		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-			datasets: [{
+			labels: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			],
+			datasets: [
+				{
 					label: 'Current Total Interest',
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
@@ -327,7 +345,7 @@ $('.biweeklyCalc').on('click', function () {
 					backgroundColor: 'rgb(255, 99, 132)',
 					borderColor: 'rgb(255, 99, 132)',
 					data: biweeklySavingsArray
-				},
+				}
 			]
 		},
 
@@ -338,14 +356,14 @@ $('.biweeklyCalc').on('click', function () {
 
 //********** SAVINGS GRAPH ***********
 
-$('.savingsCalc').on('click', function () {
+$('.savingsCalc').on('click', function() {
 	var ctx = document.getElementById('savingsChart').getContext('2d');
-	var initialInvestment = document.getElementById("multiPrincipal");
-	var addMonthly = document.getElementById("multiDepositMonthly");
-	var annualInt = document.getElementById("multiDepoInt");
-	var yearsAccrue = document.getElementById("multiDepoPay");
-	var futureVal = document.getElementById("multipleDepositFv");
-	var intEarned = document.getElementById("multipleDepositTotalint");
+	var initialInvestment = document.getElementById('multiPrincipal');
+	var addMonthly = document.getElementById('multiDepositMonthly');
+	var annualInt = document.getElementById('multiDepoInt');
+	var yearsAccrue = document.getElementById('multiDepoPay');
+	var futureVal = document.getElementById('multipleDepositFv');
+	var intEarned = document.getElementById('multipleDepositTotalint');
 
 	var initialInvestmentArray = new Array();
 	var addMonthlyArray = new Array();
@@ -354,52 +372,65 @@ $('.savingsCalc').on('click', function () {
 	var futureValueArray = new Array();
 	var interestEarnedArray = new Array();
 
-	for(var i = 0; i < yearsAccrue; i++){
+	for (var i = 0; i < yearsAccrue; i++) {
 		initialInvestmentArray[i] = initialInvestment;
 		addMonthlyArray[i] = addMonthly;
 		annualIntArray[i] = annualInt;
 		yearsAccrueArray[i] = yearsAccrue;
 		futureValueArray[i] = futureVal;
 		interestEarnedArray[i] = intEarned;
-
 	}
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'line',
 		// The data for our dataset
 		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-			datasets: [{
-				label: 'Initial Investment',
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgb(255, 99, 132)',
-				data: initialInvestmentArray
-			}, 
-			{
-				label: 'Amount to Add Monthly',
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgb(255, 99, 132)',
-				data: addMonthlyArray
-			}, 
-			{
-				label: 'Annual Interest Rate',
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgb(255, 99, 132)',
-				data: annualIntArray
-			}, 
-			{
-				label: 'Future Value',
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgb(255, 99, 132)',
-				data: futureValueArray
-			}, 
-			{
-				label: 'Interest Earned',
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgb(255, 99, 132)',
-				data: interestEarnedArray
-			}, 
-		]
+			labels: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			],
+			datasets: [
+				{
+					label: 'Initial Investment',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: initialInvestmentArray
+				},
+				{
+					label: 'Amount to Add Monthly',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: addMonthlyArray
+				},
+				{
+					label: 'Annual Interest Rate',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: annualIntArray
+				},
+				{
+					label: 'Future Value',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: futureValueArray
+				},
+				{
+					label: 'Interest Earned',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: interestEarnedArray
+				}
+			]
 		},
 
 		// Configuration options go here
@@ -407,26 +438,54 @@ $('.savingsCalc').on('click', function () {
 	});
 });
 
-
 //********** FUTURE VALUE GRAPH ***********/
 
-$('.futureValCalc').on('click', function () {
+$('.futureValCalc').on('click', function() {
 	var ctx = document.getElementById('futureChart').getContext('2d');
 	var chart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'line',
 		// The data for our dataset
 		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-			datasets: [{
-				label: 'test',
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgb(255, 99, 132)',
-				data: initialInvestment
-			}, ]
+			labels: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			],
+			datasets: [
+				{
+					label: 'test',
+					backgroundColor: 'rgb(255, 99, 132)',
+					borderColor: 'rgb(255, 99, 132)',
+					data: initialInvestment
+				}
+			]
 		},
 
 		// Configuration options go here
 		options: {}
 	});
+});
+
+$('.input-field').hide();
+
+$('#customSwitch1').click(function() {
+	if ($(this).is(':checked')) {
+		console.log('switch again');
+		$('.payment-slider').hide();
+		$('.input-field').show();
+	} else {
+		console.log('switch');
+		$('.payment-slider').show();
+		$('.input-field').hide();
+	}
 });
