@@ -95,24 +95,27 @@
                 </div>
                 
 				<div class="modal-body">
-					<span class="sub-span">Enter desired payment, rate and, term and select frequency; Click Compute and the loan total will be calculated for you.</span>
+					<span class="sub-span">Enter desired payment, rate and, term and select frequency; <br>Click Compute and the loan total will be calculated for you.</span>
 					<!-- Default checked -->
 					<div class="custom-control custom-switch">
 						<input type="checkbox" class="custom-control-input" id="customSwitch1">
 						<label class="custom-control-label" for="customSwitch1">Show input fields</label>
+						<br>
 					</div>
 										
 					<div class="container input-field">
 						<div class="row">
 							<div class = "col-md-4">
 								<form>
-									<label for="loanAffordPayment">Desired Payment:</label>
+									<div class = "test">
+									<label class = "style" for="loanAffordPayment">Desired Payment:</label>
 									<input type="text" id="loanAffordPayment" name="loanAffordPayment"  oninput="document.getElementById('dPayment').innerHTML = '$' + this.value"><br><br>
-									<label for="loanAffordRate">Annual Percentage Rate:</label>
+									<label class = "style" for="loanAffordRate">Annual Percentage Rate:</label>
 									<input type="text" id="loanAffordRate" name="loanAffordRate" oninput="document.getElementById('APR').innerHTML = this.value + `%`"><br><br>
-									<label for="loanAffordMonths">Length of Loan:</label>
+									<label class = "style" for="loanAffordMonths">Length of Loan:</label>
 									<input type="text" id="loanAffordMonths" name="loanAffordMonths"  oninput="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`"><br><br>
 								  </form>
+								</div>
 							</div>
 						</div>
 					</div>

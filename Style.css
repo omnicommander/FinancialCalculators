@@ -119,7 +119,7 @@ label {
 
 .calculators .collapsible-header {
 	justify-content: center;
-	background-color: blue;
+	background-color: #662b90 !important;
 	box-shadow: 2px 3px #ccc;
 }
 
@@ -128,7 +128,7 @@ label {
 }
 
 .calculators label {
-	color: blue;
+	color: #662b90 !important;
 	font-size: .8em;
 }
 .calculators li {
@@ -145,7 +145,7 @@ label {
 .modal-content {
 	font-size: 2em;
 	line-height: 1.2em;
-	color: blue;
+	color: #662b90 !important;
 	text-align: center;
 }
 
@@ -154,8 +154,8 @@ label {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	max-width: 90%;
-	margin: 20px auto;
+	max-width: 70%;
+	margin: 20px auto !important;
 }
 span {
 	display: flex;
@@ -237,8 +237,8 @@ label {
 }
 
 hr {
-	color: blue;
-	background-color: blue;
+	color: #662b90 !important;
+	background-color: #662b90 !important;
 	height: 1px;
 	border: none;
 	box-sizing: content-box;
@@ -268,7 +268,7 @@ hr {
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	background: blue;
+	background: #662b90 !important;
 	cursor: pointer;
 }
 
@@ -276,12 +276,12 @@ hr {
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	background: blue;
+	background: #662b90 !important;
 	cursor: pointer;
 }
 
 .dropbtn {
-	background-color: blue;
+	background-color:#662b90 !important;
 	color: white;
 	padding: 16px;
 	font-size: 16px;
@@ -361,12 +361,13 @@ hr {
 	transform: scale(1.05);
 	box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
 }
+
 .card-text {
 	height: 80px;
 }
 
-.col-md-4 .card::before,
-.col-md-4 .card::after {
+.card::before,
+.card::after {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -378,10 +379,10 @@ hr {
 	content: '';
 	pointer-events: none;
 }
-.col-md-4 .card::before {
+.card::before {
 	transform-origin: left top;
 }
-.col-md-4 .card::after {
+.card::after {
 	transform-origin: right bottom;
 }
 .card:hover::before,
@@ -390,3 +391,35 @@ hr {
 .card:focus::after {
 	transform: scale3d(1, 1, 1);
 }
+.header {
+	background-color: #F1F1F1;
+	text-align: center;
+	padding: 20px;
+  }
+  .modal-title{
+	text-align: center;
+	padding-left: 500px;
+	font-size: 36px;
+	color: black !important;
+  }
+  .sub-span{
+	padding-left: 320px;
+	color: #662b90 !important
+  }
+  .custom-control-label{
+	  padding-right: 40px;
+  }
+  .custom-control-input{
+	width: 300px;
+	height: 34px !important;
+	background-color: #2196F3;
+  }
+ .test{
+	 margin-left: 350px;
+ }
+ .style{
+	padding-left: 130px;
+ }
+ input{
+	 border-color: #662b90 !important;
+ }
