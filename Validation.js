@@ -1,17 +1,22 @@
 function validateFormLoanAfford() {
-
-    // This function checks for empty required fields
-    // With Netscape focus is placed on empty fields
-    // Inputs are hard coded, nothing is passed to it
-    // It returns a true or false depending on validity
+    console.log("clicked")
+        // This function checks for empty required fields
+        // With Netscape focus is placed on empty fields
+        // Inputs are hard coded, nothing is passed to it
+        // It returns a true or false depending on validity
     var amount = $("#loanAffordAmount").val();
-    var payment = $("#loanAffordPayment").val();
-    var rate = $("#loanAffordRate").val();
-    var months = $("#loanAffordMonths").val();
+    var payment = ($("#loanAffordPayment").val() + $("#loanAffordPaymentInput").val());
+    var rate = ($("#loanAffordRate").val() + $("#loanAffordRateInput").val());
+    var months = $("#loanAffordMonths").val() + $("#loanAffordMonthsInput").val();
     var comma = ","
     var temparry = new Array(10)
     var totalLoan = document.getElementById("loanAffordAmount").value;
     console.log(totalLoan);
+
+    console.log("payment " + payment)
+    console.log("rate " + rate)
+    console.log("months " + months)
+    console.log("total loan " + totalLoan)
 
     temparray = amount.split(comma)
     amount = temparray.join("")
@@ -45,13 +50,13 @@ function validateFormLoanAfford() {
     }
 
     if (((amount != 0) && (amount != "")) &&
-((payment != 0) && (payment != ""))) {
+        ((payment != 0) && (payment != ""))) {
         alert("Please clear either the loan payment or the loan amount to continue.");
         $("#loanAffordAmount").focus();
         return false;
     }
     if (((amount == 0) || (amount == "")) &&
-((payment == 0) || (payment == ""))) {
+        ((payment == 0) || (payment == ""))) {
         alert("You must select either the loan payment or the loan amount!");
         $("#loanAffordAmount").focus();
         return false;
@@ -60,8 +65,7 @@ function validateFormLoanAfford() {
         alert("You must select a loan rate!");
         $("#loanAffordRate").focus();
         return false;
-    }
-    else {
+    } else {
         rate = rate / 1200;
     }
 
@@ -69,8 +73,7 @@ function validateFormLoanAfford() {
         alert("You must provide the term of the loan!");
         $("#loanAffordMonths").focus();
         return false;
-    }
-    else {
+    } else {
         if ($("#loanAffordFrequency").val() == '1') {
             months = months * 12;
         }
@@ -78,8 +81,7 @@ function validateFormLoanAfford() {
 
     if (payment == 0 || payment == "") {
         $("#loanAffordPayment").val(parseInt(100 * ((amount * (rate / (1 - (Math.pow(1 + rate, -months))))) + .005)) / 100);
-    }
-    else {
+    } else {
         $("#loanAffordAmount").val(parseInt(100 * ((((Math.pow(1 + rate, -months) * (-payment + (Math.pow(1 + rate, months) * payment)))) / rate) + .005)) / 100);
     }
     return false;
@@ -91,12 +93,18 @@ function validateFormLoanPayment() {
     // With Netscape focus is placed on empty fields
     // Inputs are hard coded, nothing is passed to it
     // It returns a true or false depending on validity
-    var amount = $("#loanPaymentAmount").val();
-    var payment = $("#loanPaymentPayment").val();
-    var rate = $("#loanPaymentRate").val();
-    var months = $("#loanPaymentMonths").val();
+    var amount = ($("#loanAffordAmount").val() + $("#loanAffordAmountInput").val());
+    var payment = ($("#loanAffordPayment").val() + $("#loanAffordPaymentInput").val());
+    var rate = ($("#loanAffordRate").val() + $("#loanAffordRateInput").val());
+    var months = $("#loanAffordMonths").val() + $("#loanAffordMonthsInput").val();
     var comma = ","
     var temparry = new Array(10)
+    var totalLoan = document.getElementById("loanAffordAmount").value;
+    console.log(totalLoan);
+    console.log("amount " + amount)
+    console.log("payment " + payment)
+    console.log("rate " + rate)
+    console.log("months " + months)
 
     temparray = amount.split(comma)
     amount = temparray.join("")
@@ -130,13 +138,13 @@ function validateFormLoanPayment() {
     }
 
     if (((amount != 0) && (amount != "")) &&
-((payment != 0) && (payment != ""))) {
+        ((payment != 0) && (payment != ""))) {
         alert("Please clear either the loan payment or the loan amount to continue.");
         $("#loanPaymentAmount").focus();
         return false;
     }
     if (((amount == 0) || (amount == "")) &&
-((payment == 0) || (payment == ""))) {
+        ((payment == 0) || (payment == ""))) {
         alert("You must select either the loan payment or the loan amount!");
         $("#loanPaymentAmount").focus();
         return false;
@@ -145,8 +153,7 @@ function validateFormLoanPayment() {
         alert("You must select a loan rate!");
         $("#loanPaymentRate").focus();
         return false;
-    }
-    else {
+    } else {
         rate = rate / 1200;
     }
 
@@ -154,8 +161,7 @@ function validateFormLoanPayment() {
         alert("You must provide the term of the loan!");
         $("#loanPaymentMonths").focus();
         return false;
-    }
-    else {
+    } else {
         if ($("#loanPaymentFrequency").val() == '1') {
             months = months * 12;
         }
@@ -163,8 +169,7 @@ function validateFormLoanPayment() {
 
     if (payment == 0 || payment == "") {
         $("#loanPaymentPayment").val(parseInt(100 * ((amount * (rate / (1 - (Math.pow(1 + rate, -months))))) + .005)) / 100);
-    }
-    else {
+    } else {
         $("#loanPaymentAmount").val(parseInt(100 * ((((Math.pow(1 + rate, -months) * (-payment + (Math.pow(1 + rate, months) * payment)))) / rate) + .005)) / 100);
     }
     return false;
@@ -188,18 +193,18 @@ clearInputs = function() {
 };
 
 resets.forEach(function(reset) {
-    reset.addEventListener('click', clearInputs);
-})
-// var test = document.getElementById("test").val;
-// console.log("test: " + test);
-// var slider = document.getElementById("myRange").value;
-// console.log("slider: " + slider);
-// // var slider = document.getElementById("myRange").value();
-// var output = document.getElementById("demo");
-// output.innerHTML = slider.value; // Display the default slider value
-// // var count = function() {
-// //     output.innerHTML = this.value;    
-// // };
+        reset.addEventListener('click', clearInputs);
+    })
+    // var test = document.getElementById("test").val;
+    // console.log("test: " + test);
+    // var slider = document.getElementById("myRange").value;
+    // console.log("slider: " + slider);
+    // // var slider = document.getElementById("myRange").value();
+    // var output = document.getElementById("demo");
+    // output.innerHTML = slider.value; // Display the default slider value
+    // // var count = function() {
+    // //     output.innerHTML = this.value;    
+    // // };
 
 // // Update the current slider value (each time you drag the slider handle)
 // slider.oninput = function() {
