@@ -87,7 +87,7 @@
     <div class="modal fade modal-style modal-background" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalTitle1" aria-hidden="true">
         <div class="modal-dialog" role="document"></div>
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header card card-header">
                 <h5 class="modal-title" id="modalTitle1">How Much Loan Can I Afford?</h5>
                 <br>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -96,76 +96,100 @@
             </div>
 
             <div class="modal-body">
-                <span class="sub-span">Enter desired payment, rate and, term and select frequency; Click Compute and the loan total will be calculated for you.</span>
-                <!-- Default checked -->
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label" for="customSwitch1">Show input fields</label>
-                </div>
 
-                <div class="container input-field">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <form>
-                                <label for="loanAffordPaymentInput">Desired Payment:</label>
-                                <input type="text" id="loanAffordPaymentInput" name="loanAffordPayentInput" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' "><br><br>
-                                <label for="loanAffordRateInput">Annual Percentage Rate:</label>
-                                <input type="text" id="loanAffordRateInput" name="loanAffordRateInput" oninput="document.getElementById('APR').innerHTML = this.value + `%`"><br><br>
-                                <label for="loanAffordMonthsInput">Length of Loan:</label>
-                                <input type="text" id="loanAffordMonthsInput" name="loanAffordMonthsInput" oninput="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`"><br><br>
-                            </form>
+                <!-- toggle button -->
+                <div class="card loan-card">
+                    <p class="sub-span">Enter desired payment, rate and, term and select frequency</p>
+                    <p class="sub-span">Click Compute and the loan total will be calculated for you.</p>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1">Show input fields</label>
+                    </div>
+
+
+                    <!--Input fields-->
+                    <div class="container input-field">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-center">
+                                <form>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="loanAffordPaymentInput">Desired Payment:</label>
+                                        <input type="text" class="form-control" id="loanAffordPaymentInput" name="loanAffordPayentInput" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' ">$<br><br>
+                                    </div>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="loanAffordRateInput">Annual Percentage Rate:</label>
+                                        <input type="text" class="form-control rate" id="loanAffordRateInput" name="loanAffordRateInput" oninput="document.getElementById('APR').innerHTML = this.value + `%`">%<br><br>
+                                    </div>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="loanAffordMonthsInput">Length of Loan:</label>
+                                        <input type="text" class="form-control months" id="loanAffordMonthsInput" name="loanAffordMonthsInput" oninput="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-row payment-slider">
-                    <label>Desired Payment:</label>
-                    <input class="slider" type="range" id="loanAffordPayment" value="50" min="0" max="100000" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' " />
-                    <label id="dPayment"></label>
-                </div>
-                <div class="form-row payment-slider">
-                    <label>Annual Percentage Rate:</label>
-                    <input class="slider" type="range" id="loanAffordRate" value="0" min="0" max="25" oninput="document.getElementById('APR').innerHTML = this.value + `%`" />
-                    <label id="APR"></label>
-                </div>
-                <div class="form-row payment-slider">
-                    <label>Length of Loan:</label>
-                    <input class="slider" type="range" id="loanAffordMonths" value="0" min="0" max="100" onchange="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`" />
-                    <label id="lengthLoan"></label>
-                </div>
-                <div class="form-row">
-                    <label>Select loan frequency:</label>
-                    <select id="loanAffordFrequency" aria-label="Dropdown for Months or Years">
+
+                    <!--Slider fields-->
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div class="card card-loan form-row payment-slider">
+                                <label>Desired Payment:</label>
+                                <input class="slider" type="range" id="loanAffordPayment" value="50" min="0" max="100000" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' " />
+                                <label id="dPayment"></label>
+                            </div>
+                            <div class="card card-loan form-row payment-slider">
+                                <label>Annual Percentage Rate:</label>
+                                <input class="slider" type="range" id="loanAffordRate" value="0" min="0" max="25" oninput="document.getElementById('APR').innerHTML = this.value + `%`" />
+                                <label id="APR"></label>
+                            </div>
+                            <div class="card card-loan form-row payment-slider">
+                                <label>Length of Loan:</label>
+                                <input class="slider" type="range" id="loanAffordMonths" value="0" min="0" max="100" onchange="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`" />
+                                <label id="lengthLoan"></label>
+                            </div>
+                            <div class="form-row">
+                                <label>Select loan frequency:</label>
+                                <select id="loanAffordFrequency" aria-label="Dropdown for Months or Years">
 							<option value="12" selected="selected">Months </option>
 							<option value="1">Years </option>
 						</select>
-                </div>
+                            </div>
 
-                <div class="form-row mt-4">
-                    <div class="full-wrap">
-                        <input id="find" class="compute calc-button" type="button" class="calc-button" value="Compute" onclick="validateFormLoanAfford()" id="loanCompute" />
-                        <input type="button" value="Reset" class="calc-button reset" onclick="resetDesiredPayment()" />
+                            <div class="form-row mt-4">
+                                <div class="full-wrap">
+                                    <input id="find" class="compute calc-button btn btn-success" type="button" value="Compute" onclick="validateFormLoanAfford()" id="loanCompute" />
+                                    <input type="button" value="Reset" class="calc-button btn btn-warning reset" onclick="resetDesiredPayment()" />
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-row">
+                                <label class="loan-dollar" for="amount">Loan Amount:</label>
+
+                                <div class="col-md-10">
+                                    <span class="loan-amount">
+                                        $<input
+                                        id="loanAffordAmount"
+                                        value="0"
+                                        type="number"
+                                        autocomplete="off"
+                                        min="1"
+                                        step="0.01"
+                                        placeholder="0.00"
+                                        aria-label="Loan Amount"
+                                    />
+                                </span>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+                    <p class="small">
+                        *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                        <canvas id="loanChart" width="5" height="5"></canvas>
+                    </p>
                 </div>
-                <hr />
-                <div class="form-row">
-                    <label for="amount">Loan Amount:</label>
-                    <span>
-							$<input
-								id="loanAffordAmount"
-								value="0"
-								type="number"
-								autocomplete="off"
-								min="1"
-								step="0.01"
-								placeholder="0.00"
-								aria-label="Loan Amount"
-							/>
-						</span>
-                </div>
-                <p class="small">
-                    *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
-                    <canvas id="loanChart" width="5" height="5"></canvas>
-                </p>
             </div>
 
             <div class="modal-footer">
