@@ -514,7 +514,7 @@ input {
 
 .card-header {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 0px;
     animation-name: stretch;
     animation-duration: 5.5s;
     animation-timing-function: ease-out;
