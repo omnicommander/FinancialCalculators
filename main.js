@@ -7,18 +7,20 @@ $('.calc-button').on('click', function() {
     var apr = (document.getElementById('loanAffordRate').value + document.getElementById('loanAffordRateInput').value) / 100;
     var lengthLoan = document.getElementById('loanAffordMonths').value + document.getElementById('loanAffordMonthsInput').value;
     var desiredPayment = document.getElementById('loanAffordPayment').value + document.getElementById('loanAffordPaymentInput').value;
-
+    //GETTING ALL DATA FROM HTML
+    
     var breakdownInterest = apr / lengthLoan * desiredPayment; //yearly interest on loan
     var totalInterest = breakdownInterest * lengthLoan;
     var monthlyPayment = breakdownInterest / 12 + sumLoan / lengthLoan; //wrong formula
     var test = 3;
-    var interestArray = new Array();
+    //CONVERT TO ARRAY BECAUSE GRAPHS JS WILL ONLY PLOT ONE POINT UNLESS AN ARRAY
+    var interestArray = new Array();                
     var totalInterestArray = new Array();
     var remainingBalance = new Array();
     var lengthArray = new Array();
     var monthlyArray = new Array();
     var total = new Array();
-
+//ASSIGNING VALUES FOR ARRAYS
     for (var i = 0; sumLoan > 0; i++) {
         lengthArray[i] = i;
         interestArray[i] = totalInterest;
@@ -34,13 +36,13 @@ $('.calc-button').on('click', function() {
         type: 'line',
         // The data for our dataset
         data: {
-            labels: lengthArray,
+            labels: lengthArray,                   //Y AXIS
             datasets: [{
-                    label: 'Total Interest Paid',
-                    backgroundColor: 'rgb(30, 205, 59)',
+                    label: 'Total Interest Paid',       //TITLE OF PLOTTED LINE
+                    backgroundColor: 'rgb(30, 205, 59)',    //CUSTOMIZE COLORS IN HERE
                     borderColor: 'rgb(30, 205, 59)',
                     fill: false,
-                    data: totalInterestArray
+                    data: totalInterestArray            //WHAT DATA YOU WANT DISPLAYED
                 },
                 {
                     label: 'Monthly Interest',
@@ -67,10 +69,10 @@ $('.calc-button').on('click', function() {
         },
 
         // Configuration options go here
-        options: {
+        options: {                                  //ALL CUSTOMIZABLE FEATURES
             scales: {
                 yAxes: [{
-                    ticks: {
+                    ticks: {                        //CAN ADJUST NUMBER OF TICKS
                         suggestedMin: 50,
                         suggestedMax: 100
                     }
