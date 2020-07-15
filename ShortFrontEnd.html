@@ -30,10 +30,10 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-1 col-12 text-center">
                     <div class="card item-card card-block">
-                        <img class="card-img img-fluid" src="https://resize.hswstatic.com/w_907/gif/loan-personal.jpg" alt="Photo of sunset">
-                        <h5 class="item-card-title mt-3 mb-3">Calculate Your Loan</h5>
-                        <p class="card-text">Here is some text about your loan</p>
-                        <button class="calc-btn btn btn-primary" data-toggle="modal" data-target="#modal1">Your Loan</button>
+                        <img class="card-img img-fluid" src="https://resize.hswstatic.com/w_907/gif/loan-personal.jpg" alt="Photo of sunset"> <!--IMAGE OF MODAL -->
+                        <h5 class="item-card-title mt-3 mb-3">Calculate Your Loan</h5> <!--TITLE OF MODAL -->
+                        <p class="card-text">Here is some text about your loan</p> <!-- MODAL TEXT -->
+                        <button class="calc-btn btn btn-primary" data-toggle="modal" data-target="#modal1">Your Loan</button>	<!--SEE CALCULATOR -->
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-1 col-12 text-center">
@@ -88,9 +88,9 @@
         <div class="modal-dialog" role="document"></div>
         <div class="modal-content">
             <div class="modal-header card card-header">
-                <h5 class="modal-title" id="modalTitle1">How Much Loan Can I Afford?</h5>
+                <h5 class="modal-title" id="modalTitle1">How Much Loan Can I Afford?</h5>	<!--CALCULATOR TITLE-->
                 <br>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">	<!--CLOSE CALCULATOR-->
 						<span aria-hidden="true">&times;</span>
                     </button>
 
@@ -104,7 +104,7 @@
                     <p class="sub-span">Click Compute and the loan total will be calculated for you.</p>
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1">Show input fields</label>
+                        <label class="custom-control-label" for="customSwitch1">Show input fields</label> <!--TOGGLE DIRECT INPUTS-->
 
                     </div>
 
@@ -115,10 +115,12 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-4 text-center">
                                 <form>
-                                    <div class="card card-loan-input form-group">
-                                        <label for="loanAffordPaymentInput">Desired Payment:</label>
+					<!--ENTER DATA-->
+                                    <div class="card card-loan-input form-group"> 
+                                        <label for="loanAffordPaymentInput">Desired Payment:</label> 
                                         <input type="text" class="form-control" id="loanAffordPaymentInput" name="loanAffordPayentInput" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' ">$<br><br>
-                                    </div>
+                                   	<!--CALL DATA USING ID OF INPUT FOR DOM-->
+				</div>
                                     <div class="card card-loan-input form-group">
                                         <label for="loanAffordRateInput">Annual Percentage Rate:</label>
                                         <input type="text" class="form-control rate" id="loanAffordRateInput" name="loanAffordRateInput" oninput="document.getElementById('APR').innerHTML = this.value + `%`">%<br><br>
@@ -152,6 +154,7 @@
                                 <label id="lengthLoan"></label>
                             </div>
                             <div class="form-row">
+				    <!--TIME SELECTION -->
                                 <label>Select loan frequency:</label>
                                 <select id="loanAffordFrequency" aria-label="Dropdown for Months or Years">
 							<option value="12" selected="selected">Months </option>
@@ -166,6 +169,7 @@
                                 </div>
                             </div>
                             <hr />
+				<!--RESULTS-->
                             <div class="form-row">
                                 <label class="loan-dollar" for="amount">Loan Amount:</label>
 
