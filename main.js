@@ -1,22 +1,4 @@
-function resetDesiredPayment() {
-    document.getElementById('loanAffordAmount').value = 0;
-    document.getElementById('loanAffordMonths').value = 0;
-    document.getElementById('loanAffordRate').value = 0;
-    document.getElementById('loanAffordPayment').value = 0;
-    document.getElementById('lengthLoan').innerHTML = '0 months/years';
-    document.getElementById('APR').innerHTML = '0%';
-    document.getElementById('dPayment').innerHTML = '$0';
-}
 
-function resetLoanPayment() {
-    document.getElementById('loanPaymentAmount').value = 0;
-    document.getElementById('loanPaymentMonths').value = 0;
-    document.getElementById('loanPaymentRate').value = 0;
-    document.getElementById('loanPaymentPayment').value = 0;
-    document.getElementById('loanLength').innerHTML = '0 months/years';
-    document.getElementById('paymentRate').innerHTML = '0%';
-    document.getElementById('loanAmount').innerHTML = '$0';
-}
 //********** LOAN GRAPH ***************/
 $('.calc-button').on('click', function() {
     console.log('here');
@@ -500,16 +482,3 @@ $('.futureValCalc').on('click', function() {
     });
 });
 
-$('.input-field').hide();
-
-$('#customSwitch1').click(function() {
-    if ($(this).is(':checked')) {
-        console.log('switch again');
-        $('.payment-slider').hide();
-        $('.input-field').show();
-    } else {
-        console.log('switch');
-        $('.payment-slider').show();
-        $('.input-field').hide();
-    }
-});
