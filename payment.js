@@ -156,3 +156,108 @@ function resetLoanPayment() {
     document.getElementById('paymentRate').innerHTML = '0%';
     document.getElementById('loanAmount').innerHTML = '$0';
 }
+
+//********** PAYMENT GRAPH ***************
+$('.loanPayCalc').on('click', function() {
+    console.log('here');
+    var ctx = document.getElementById('paymentChart').getContext('2d');
+    var totalLoan = document.getElementById('loanPaymentAmount').value; //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
+    var apr = document.getElementById('loanPaymentRate').value / 100;
+    var lengthLoan = document.getElementById('loanPaymentMonths').value;
+    var payment = document.getElementById('loanPaymentPayment').value;
+    var temp = totalLoan;
+    var actualTotal = payment * lengthLoan;
+    console.log('OVERALL TOTAL: ' + actualTotal);
+
+    var breakdownInterest = apr / lengthLoan * totalLoan; //yearly interest on loan
+    var totalInterest = breakdownInterest * lengthLoan;
+    var monthlyPayment = breakdownInterest / 12 + totalLoan / lengthLoan; //wrong formula
+    console.log('Monthly Interest: ' + breakdownInterest);
+    console.log('Monthly Payment: ' + monthlyPayment);
+    console.log('Total Interest on Loan: ' + totalInterest);
+    console.log('Yearly Interest: ' + breakdownInterest);
+    console.log('Total Loan: ' + totalLoan);
+    console.log('APR: ' + apr);
+    console.log('Loan Length: ' + lengthLoan);
+    var interestArray = new Array();
+    var totalInterestArray = new Array();
+    var remainingBalance = new Array();
+    var monthlyArray = new Array();
+    var overallPaymentArray = new Array();
+    var lengthArray = new Array();
+
+    for (var i = 0; temp > 0; i++) {
+        interestArray[i] = breakdownInterest;
+        lengthArray[i] = i;
+        totalInterestArray[i] = totalInterest;
+        remainingBalance[i] = temp - monthlyPayment;
+        temp = remainingBalance[i];
+        monthlyArray[i] = payment;
+        overallPaymentArray[i] = actualTotal;
+    }
+    console.log('Interest Array: ' + interestArray);
+    console.log('Remaining Balance: ' + remainingBalance);
+    //var balance = totalLoan - principal;
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+        // The data for our dataset
+        data: {
+            labels: lengthArray,
+            datasets: [{
+                    label: 'Monthly Interest',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointColor: '#da3e2f',
+                    strokeColor: '#da3e2f',
+                    fill: false,
+                    data: interestArray
+                },
+                {
+                    label: 'Total Interest',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    fill: false,
+                    data: totalInterestArray
+                },
+                {
+                    label: 'Overall Payment',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    fill: false,
+                    data: overallPaymentArray
+                },
+                {
+                    label: 'Monthly Payment',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    fill: false,
+                    data: monthlyArray
+                },
+                {
+                    label: 'Remaining Balance',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    fill: false,
+                    data: remainingBalance
+                }
+            ]
+        },
+
+        // Configuration options go here
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        suggestedMin: 50,
+                        suggestedMax: 100
+                    }
+                }]
+            }
+        }
+    });
+});
+
+
+
+
