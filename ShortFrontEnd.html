@@ -232,7 +232,7 @@
 
                 </div>
 
-                   <!--Input fields-->
+                   <!--Input fields for Loan Payment-->
                    <div class="container input-field">
                     <div class="row">
                         <div class="col-md-4"></div>
@@ -255,6 +255,7 @@
                     </div>
                 </div>
                 
+                <!-- Sliders for Loan Payment -->
                 <div class="card card-loan form-row payment-slider">
                     <label>Loan Amount:</label>
                     <input class="slider" type="range" id="loanPaymentAmount" value="0" min="0" max="1000000" oninput="document.getElementById('loanAmount').innerHTML = '$' + this.value" />
@@ -397,6 +398,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Sliders for Refinance Information-->
                 <div class="form-row">
                     <div class="card card-loan form-row payment-slider">
                         <label>Interest Rate to Refinance: </label>
@@ -491,7 +494,7 @@
             </div>
             <div class="modal-body">
 
-                    <!-- toggle button for Mortgage Information-->
+                    <!-- toggle button for Biweekly mortgage calc-->
              <div class="card loan-card">
                 <p>
                     This calculator will show you how much you can save if you make half of your mortgage payment every two weeks instead of making a full mortgage payment once a month. In effect, you are making one extra mortgage payment per year!
@@ -502,7 +505,7 @@
                 </div>
 
 
-                <!--Input fields for Mortage Information-->
+                <!--Input fields for Biweekly mortgage calc -->
                 <div class="container input-field">
                     <div class="row">
                         <div class="col-md-4"></div>
@@ -526,7 +529,7 @@
                 </div>
 
 
-
+                <!--sliders for biweekly mortgage calc-->
                 <div class="form-row">
                     <div class="card card-loan form-row payment-slider">
                     <label for="principal">Mortgage Principal:</label>
@@ -550,7 +553,7 @@
                 </div>
                 <div class="form-row">
                     <div class="full-wrap">
-                        <input class="compute calc-button btn btn-success biweeklyCalc" type="button" class="calc-button" value="Compute" onclick=drawGraph() type="button" id="mortgagePaymentCompute" />
+                        <input class="compute calc-button btn btn-success biweeklyCalc" type="button" class="calc-button" value="Compute" type="button" id="mortgagePaymentCompute" />
                         <input type="button" id="reset" value="Reset" class="calc-button btn btn-warning reset" />
                     </div>
                 </div>
@@ -595,36 +598,82 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h1>Build Your Savings Calculator</h1>
+
+                       <!-- toggle button for Savings calc -->
+             <div class="card loan-card">
                 <p>
                     To calculate the future value of a monthly investment, enter the beginning balance, the monthly dollar amount you plan to deposit, the interest rate you expect to earn, and the number of years you expect to continue making monthly deposits, then click
                     the "Compute" button.
                 </p>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                    <label class="custom-control-label" for="customSwitch5">Show input fields</label>
+                </div>
+                <!-- <h1>Build Your Savings Calculator</h1> -->
 
+
+
+                     <!--Input fields for Savings calc -->
+                     <div class="container input-field">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-center">
+                                <form>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="multipleDepositPrincipalInput">Initial Investment (optional):</label>
+                                        <input type="text" class="form-control" id="multipleDepositPrincipalInput" name="multipleDepositPrincipalInput" oninput="document.getElementById('multiPrincipal').innerHTML = this.value + '$' ">$<br><br>
+                                    </div>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="multipleDepositMoAddInput">Amount to Add Monthly:</label>
+                                        <input type="text" class="form-control rate" id="multipleDepositMoAddInput" name="multipleDepositMoAddInput" oninput="document.getElementById('multiDepositMonthly').innerHTML = this.value + `%`">%<br><br>
+                                    </div>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="multipleDepositInterestInput">Annual Interest Rate:</label>
+                                        <input type="text" class="form-control months" id="multipleDepositInterestInput" name="multipleDepositInterestInput" oninput="document.getElementById('multiDepoInt').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                    </div>
+                                    <div class="card card-loan-input form-group">
+                                        <label for="multipleDepositPaymentsInput">Years to Accrue:</label>
+                                        <input type="text" class="form-control months" id="multipleDepositPaymentsInput" name="multipleDepositPaymentsInput" oninput="document.getElementById('multiDepoPay').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sliders for Savings calc -->
                 <form action="" method="post" onsubmit="multipleDepositComputeForm()">
                     <div class="form-row">
+                        <div class="card card-loan form-row payment-slider">
                         <label for="principal">Initial Investment (optional):</label>
                         <input class="slider" type="range" id="multipleDepositPrincipal" value="0" min="0" max="50" oninput="document.getElementById('multiPrincipal').innerHTML = this.value" />
                         <label id="multiPrincipal"></label>
+                        </div>
                     </div>
                     <div class="form-row">
+                        <div class="card card-loan form-row payment-slider">
                         <label for="moAdd">Amount to Add Monthly:</label>
                         <input class="slider" type="range" id="multipleDepositMoAdd" value="0" min="0" max="50" oninput="document.getElementById('multiDepositMonthly').innerHTML = this.value" />
                         <label id="multiDepositMonthly"></label>
                     </div>
+                    </div>
                     <div class="form-row">
+                        <div class="card card-loan form-row payment-slider">
                         <label for="interest">Annual Interest Rate:</label> &nbsp;
                         <input class="slider" type="range" id="multipleDepositInterest" value="0" min="0" max="50" oninput="document.getElementById('multiDepoInt').innerHTML = this.value" />
                         <label id="multiDepoInt"></label>
                     </div>
+                    </div>
                     <div class="form-row">
+                        <div class="card card-loan form-row payment-slider">
                         <label for="payments">Years to Accrue:</label> &nbsp;
                         <input class="slider" type="range" id="multipleDepositPayments" value="0" min="0" max="50" oninput="document.getElementById('multiDepoPay').innerHTML = this.value" />
                         <label id="multiDepoPay"></label>
                     </div>
+                    </div>
                     <div class="form-row">
                         <div class="full-wrap">
-                            <input type="button" id="multipleDepositCompute" value="Compute" class="calc-button savingsCalc"> <input type="button" value="Reset" class="calc-button reset">
+                            <input class="compute calc-button btn btn-success savingsCalc" type="button" class="calc-button" value="Compute" type="button" id="multipleDepositCompute" />
+                            <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
                         </div>
                     </div>
                 </form>
@@ -661,34 +710,69 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h1>Future Value Interest Calculator</h1>
+
+                       <!-- toggle button for Future Value -->
+             <div class="card loan-card">
                 <p>
                     To calculate the future value of a one-time, lump-sum investment, enter the dollar amount invested, the interest rate you expect to earn, and the number of years you expect to let the investment grow, then click the "Compute" button.
                 </p>
-                <noscript>
-					<p>
-						JavaScript must be enabled for this calculator to function.
-					</p>
-				</noscript>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch6">
+                    <label class="custom-control-label" for="customSwitch6">Show input fields</label>
+                </div>
+                <!-- <h1>Future Value Interest Calculator</h1> -->
+
+
+                 <!--Input fields for Future Value -->
+                 <div class="container input-field">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            <form>
+                                <div class="card card-loan-input form-group">
+                                    <label for="singleDepositPrincipalInput">Deposit Amount:</label>
+                                    <input type="text" class="form-control" id="singleDepositPrincipalInput" name="singleDepositPrincipalInput" oninput="document.getElementById('singleDepoPrincipal').innerHTML = this.value + '$' ">$<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="singleDepositInterestInput">Annual Interest Rate:</label>
+                                    <input type="text" class="form-control rate" id="singleDepositInterestInput" name="singleDepositInterestInput" oninput="document.getElementById('singleDepoInt').innerHTML = this.value + `%`">%<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="singleDepositPaymentsInput">Years to Accrue:</label>
+                                    <input type="text" class="form-control months" id="singleDepositPaymentsInput" name="singleDepositPaymentsInput" oninput="document.getElementById('singleDepoPay').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Slider for Future Value -->
                 <form action="" method="post" onsubmit="singleDepositComputeForm()">
                     <div class="form-row">
+                        <div class="card card-loan form-row payment-slider">
                         <label for="principal">Deposit Amount:</label>
                         <input class="slider" type="range" id="singleDepositPrincipal" value="0" min="0" max="50" oninput="document.getElementById('singleDepoPrincipal').innerHTML = this.value" />
                         <label id="singleDepoPrincipal"></label>
+                        </div>
                     </div>
                     <div class="form-row">
-                        <label for="interest">Annual Interest Rate:</label> &nbsp;
+                        <div class="card card-loan form-row payment-slider">
+                        <label for="interest">Annual Interest Rate:</label> 
                         <input class="slider" type="range" id="singleDepositInterest" value="0" min="0" max="50" oninput="document.getElementById('singleDepoInt').innerHTML = this.value" />
                         <label id="singleDepoInt"></label>
                     </div>
+                    </div>
                     <div class="form-row">
-                        <label for="payments">Years to Accrue:</label> &nbsp;
+                        <div class="card card-loan form-row payment-slider">
+                        <label for="payments">Years to Accrue:</label> 
                         <input class="slider" type="range" id="singleDepositPayments" value="0" min="0" max="50" oninput="document.getElementById('singleDepoPay').innerHTML = this.value" />
                         <label id="singleDepoPay"></label>
                     </div>
+                    </div>
                     <div class="form-row">
                         <div class="full-wrap">
-                            <input type="button" value="Compute" id="singleDepositCompute" class="calc-button futureValCalc" /> <input type="button" value="Reset" class="calc-button reset" />
+                            <input class="compute calc-button btn btn-success futureValCalc" type="button" class="calc-button" value="Compute" id="singleDepositCompute" />
+                            <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
                         </div>
                     </div>
                     <hr />

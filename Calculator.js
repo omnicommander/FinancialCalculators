@@ -20,6 +20,7 @@ var resets = document.querySelectorAll(".reset"),
     clearInputs = function() { inputs.forEach(function(e) { e.value = "" }) };
 
 function singleDepositComputeForm() {
+    
     if (!(isNaN($("#singleDepositPrincipal").val()) || isNaN($("#singleDepositInterest").val()) || isNaN($("#singleDepositPayments").val()))) {
         var e = parseInt($("#singleDepositPayments").val().replace(",", "")),
             t = parseFloat($("#singleDepositInterest").val().replace(",", "")),

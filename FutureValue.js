@@ -89,3 +89,19 @@ $('.futureValCalc').on('click', function() {
     });
 });
 
+
+
+//Toggle Button
+$('.input-field').hide();
+
+$('#customSwitch6').click(function() {
+    if ($(this).is(':checked')) {
+        console.log('switch again');
+        $('.payment-slider').hide();
+        $('.input-field').show();
+    } else {
+        console.log('switch');
+        $('.payment-slider').show();
+        $('.input-field').hide();
+    }
+});
