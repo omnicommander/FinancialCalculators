@@ -322,7 +322,6 @@
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitch3">
                     <label class="custom-control-label" for="customSwitch3">Show input fields</label>
-
                 </div>
                                 
                 <!--Input fields for Mortage Information-->
@@ -422,7 +421,8 @@
                 </div>
                 <div class="form-row">
                     <div class="full-wrap">
-                        <input class="compute calc-button refinanceCalc" onclick=drawGraph() type="button" id="mortgageRefinanceCompute" value="Compute" class="calc-button" /> <input type="button" value="Reset" class="calc-button reset" />
+                        <input class="compute calc-button btn btn-success refinanceCalc" type="button" class="calc-button" value="Compute" onclick=drawGraph() type="button" id="mortgageRefinanceCompute" />
+                        <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
                     </div>
                 </div>
                 <hr />
@@ -473,6 +473,7 @@
         </div>
     </div>
     </div>
+    </div>
 
 
 
@@ -489,34 +490,68 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h1>Bi-Weekly Mortgage Payment Calculator</h1>
+
+                    <!-- toggle button for Mortgage Information-->
+             <div class="card loan-card">
                 <p>
                     This calculator will show you how much you can save if you make half of your mortgage payment every two weeks instead of making a full mortgage payment once a month. In effect, you are making one extra mortgage payment per year!
                 </p>
-                <noscript>
-					<p>
-						JavaScript must be enabled for this calculator to function.
-					</p>
-				</noscript>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                    <label class="custom-control-label" for="customSwitch4">Show input fields</label>
+                </div>
+
+
+                <!--Input fields for Mortage Information-->
+                <div class="container input-field">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            <form>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgagePaymentPrincipalInput">Mortgage Principal:</label>
+                                    <input type="text" class="form-control" id="mortgagePaymentPrincipalInput" name="mortgagePaymentPrincipalInput" oninput="document.getElementById('mortPayPrinc').innerHTML = this.value + '$' ">$<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgagePaymentPaymentInput">Monthly Payment:</label>
+                                    <input type="text" class="form-control rate" id="mortgagePaymentPaymentInput" name="mortgagePaymentPaymentInput" oninput="document.getElementById('mortPayPay').innerHTML = this.value + `%`">%<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgagePaymentIntRateInput">Interest Rate:</label>
+                                    <input type="text" class="form-control months" id="mortgagePaymentIntRateInput" name="mortgagePaymentIntRateInput" oninput="document.getElementById('mortPayIntRate').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <div class="form-row">
+                    <div class="card card-loan form-row payment-slider">
                     <label for="principal">Mortgage Principal:</label>
                     <input class="slider" type="range" id="mortgagePaymentPrincipal" value="0" min="0" max="50" oninput="document.getElementById('mortPayPrinc').innerHTML = '$' + this.value" />
                     <label id="mortPayPrinc"></label>
+                    </div>
                 </div>
                 <div class="form-row">
+                    <div class="card card-loan form-row payment-slider">
                     <label for="payment">Monthly Payment:</label>
                     <input class="slider" type="range" id="mortgagePaymentPayment" value="0" min="0" max="50" oninput="document.getElementById('mortPayPay').innerHTML = '$' + this.value" />
                     <label id="mortPayPay"></label>
+                    </div>
                 </div>
                 <div class="form-row">
+                    <div class="card card-loan form-row payment-slider">
                     <label for="intRate">Interest Rate:</label>
                     <input class="slider" type="range" id="mortgagePaymentIntRate" value="0" min="0" max="50" oninput="document.getElementById('mortPayIntRate').innerHTML = this.value + '%'" />
                     <label id="mortPayIntRate"></label>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="full-wrap">
-                        <input type="button" id="mortgagePaymentCompute" value="Compute" class="calc-button biweeklyCalc" /> <input type="button" id="reset" value="Reset" class="calc-button" />
+                        <input class="compute calc-button btn btn-success biweeklyCalc" type="button" class="calc-button" value="Compute" onclick=drawGraph() type="button" id="mortgagePaymentCompute" />
+                        <input type="button" id="reset" value="Reset" class="calc-button btn btn-warning reset" />
                     </div>
                 </div>
                 <hr />

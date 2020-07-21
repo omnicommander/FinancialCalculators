@@ -92,85 +92,31 @@ $('.biweeklyCalc').on('click', function() {
     });
 });
 
-//********** SAVINGS GRAPH ***********
 
-$('.savingsCalc').on('click', function() {
-    var ctx = document.getElementById('savingsChart').getContext('2d');
-    var initialInvestment = document.getElementById('multiPrincipal');
-    var addMonthly = document.getElementById('multiDepositMonthly');
-    var annualInt = document.getElementById('multiDepoInt');
-    var yearsAccrue = document.getElementById('multiDepoPay');
-    var futureVal = document.getElementById('multipleDepositFv');
-    var intEarned = document.getElementById('multipleDepositTotalint');
+//Toggle button
+$('.input-field').hide();
 
-    var initialInvestmentArray = new Array();
-    var addMonthlyArray = new Array();
-    var annualIntArray = new Array();
-    var yearsAccrueArray = new Array();
-    var futureValueArray = new Array();
-    var interestEarnedArray = new Array();
-
-    for (var i = 0; i < yearsAccrue; i++) {
-        initialInvestmentArray[i] = initialInvestment;
-        addMonthlyArray[i] = addMonthly;
-        annualIntArray[i] = annualInt;
-        yearsAccrueArray[i] = yearsAccrue;
-        futureValueArray[i] = futureVal;
-        interestEarnedArray[i] = intEarned;
+$('#customSwitch4').click(function() {
+    if ($(this).is(':checked')) {
+        console.log('switch again');
+        $('.payment-slider').hide();
+        $('.input-field').show();
+    } else {
+        console.log('switch');
+        $('.payment-slider').show();
+        $('.input-field').hide();
     }
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-        // The data for our dataset
-        data: {
-            labels: [
-                'January',
-                'February',
-                'March',
-                'April',
-                'May',
-                'June',
-                'July',
-                'August',
-                'September',
-                'October',
-                'November',
-                'December'
-            ],
-            datasets: [{
-                    label: 'Initial Investment',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: initialInvestmentArray
-                },
-                {
-                    label: 'Amount to Add Monthly',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: addMonthlyArray
-                },
-                {
-                    label: 'Annual Interest Rate',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: annualIntArray
-                },
-                {
-                    label: 'Future Value',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: futureValueArray
-                },
-                {
-                    label: 'Interest Earned',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: interestEarnedArray
-                }
-            ]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
