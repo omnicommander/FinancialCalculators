@@ -133,29 +133,6 @@ resets.forEach(function(reset) {
 // }
 
 
-$('.input-field').hide();
-
-$('#customSwitch2').click(function() {
-    if ($(this).is(':checked')) {
-        console.log('switch again');
-        $('.payment-slider').hide();
-        $('.input-field').show();
-    } else {
-        console.log('switch');
-        $('.payment-slider').show();
-        $('.input-field').hide();
-    }
-});
-
-function resetLoanPayment() {
-    document.getElementById('loanPaymentAmount').value = 0;
-    document.getElementById('loanPaymentMonths').value = 0;
-    document.getElementById('loanPaymentRate').value = 0;
-    document.getElementById('loanPaymentPayment').value = 0;
-    document.getElementById('loanLength').innerHTML = '0 months/years';
-    document.getElementById('paymentRate').innerHTML = '0%';
-    document.getElementById('loanAmount').innerHTML = '$0';
-}
 
 //********** PAYMENT GRAPH ***************
 $('.loanPayCalc').on('click', function() {
@@ -261,3 +238,31 @@ $('.loanPayCalc').on('click', function() {
 
 
 
+
+
+//Toggle Button
+$('.input-field').hide();
+
+$('#customSwitch2').click(function() {
+    if ($(this).is(':checked')) {
+        console.log('switch again');
+        $('.payment-slider').hide();
+        $('.input-field').show();
+    } else {
+        console.log('switch');
+        $('.payment-slider').show();
+        $('.input-field').hide();
+    }
+});
+
+
+//reset fields
+function resetLoanPayment() {
+    document.getElementById('loanPaymentAmount').value = 0;
+    document.getElementById('loanPaymentMonths').value = 0;
+    document.getElementById('loanPaymentRate').value = 0;
+    document.getElementById('loanPaymentPayment').value = 0;
+    document.getElementById('loanLength').innerHTML = '0 months/years';
+    document.getElementById('paymentRate').innerHTML = '0%';
+    document.getElementById('loanAmount').innerHTML = '$0';
+}

@@ -120,7 +120,7 @@
                                         <label for="loanAffordPaymentInput">Desired Payment:</label> 
                                         <input type="text" class="form-control" id="loanAffordPaymentInput" name="loanAffordPayentInput" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' ">$<br><br>
                                    	<!--CALL DATA USING ID OF INPUT FOR DOM-->
-				</div>
+				                    </div>
                                     <div class="card card-loan-input form-group">
                                         <label for="loanAffordRateInput">Annual Percentage Rate:</label>
                                         <input type="text" class="form-control rate" id="loanAffordRateInput" name="loanAffordRateInput" oninput="document.getElementById('APR').innerHTML = this.value + `%`">%<br><br>
@@ -225,10 +225,10 @@
 
              <!-- toggle button -->
              <div class="card loan-card">
-                <p class="sub-p">Enter loan amount, rate and the term; the loan payment will be calculated for you.</p>
+                <p class="sub-span">Enter loan amount, rate and the term; the loan payment will be calculated for you.</p>
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                    <label class="custom-control-label" for="customSwitch1">Show input fields</label>
+                    <label class="custom-control-label" for="customSwitch2">Show input fields</label>
 
                 </div>
 
@@ -240,7 +240,7 @@
                             <form>
                                 <div class="card card-loan-input form-group">
                                     <label for="loanPaymentAmountInput">Loan Amount:</label>
-                                    <input type="text" class="form-control" id="loanPaymentAmountInput" name="loanPayentAmountInput" oninput="document.getElementById('loanAmount').innerHTML = this.value + '$' ">$<br><br>
+                                    <input type="text" class="form-control" id="loanPaymentAmountInput" name="loanPaymentAmountInput" oninput="document.getElementById('loanAmount').innerHTML = this.value + '$' ">$<br><br>
                                 </div>
                                 <div class="card card-loan-input form-group">
                                     <label for="loanPaymentRateInput">Annual Percentage Rate:</label>
@@ -315,55 +315,110 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h2>Your Current Mortgage Information</h2>
 
+                 <!-- toggle button for Mortgage Information-->
+             <div class="card loan-card">
+                <p>Your Current Mortgage Information</p>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                    <label class="custom-control-label" for="customSwitch3">Show input fields</label>
+
+                </div>
+                                
+                <!--Input fields for Mortage Information-->
+                <div class="container input-field">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            <form>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgageRefinancePrincipalInput">Principal:</label>
+                                    <input type="text" class="form-control" id="mortgageRefinancePrincipalInput" name="mortgageRefinancePrincipalInput" oninput="document.getElementById('principal').innerHTML = this.value + '$' ">$<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgageRefinancePaymentInput">Monthly Payment:</label>
+                                    <input type="text" class="form-control rate" id="mortgageRefinancePaymentInput" name="mortgageRefinancePaymentInput" oninput="document.getElementById('monthlyPayment').innerHTML = this.value + `%`">%<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgageRefinanceIntRateInput">Interest Rate:</label>
+                                    <input type="text" class="form-control months" id="mortgageRefinanceIntRateInput" name="mortgageRefinanceIntRateInput" oninput="document.getElementById('intRate').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider for Current Mortgage-->
                 <div class="form-row">
-                    <p>
+                    <div class="card card-loan form-row payment-slider">
                         <label>Principal: </label>
                         <input class="slider" type="range" id="mortgageRefinancePrincipal" value="0" min="0" max="500000" oninput="document.getElementById('principal').innerHTML = `$` + this.value" />
                         <label id="principal"></label>
-                    </p>
+                    </div>
                 </div>
 
                 <div class="form-row">
-                    <p>
+                      <div class="card card-loan form-row payment-slider">
                         <label>Monthly Payment: </label>
                         <input class="slider" type="range" id="mortgageRefinancePayment" value="0" min="0" max="50000" oninput="document.getElementById('monthlyPayment').innerHTML = `$` + this.value" />
                         <label id="monthlyPayment"></label>
-                    </p>
+                      </div>
                 </div>
 
                 <div class="form-row">
-                    <p>
+                      <div class="card card-loan form-row payment-slider">
                         <label>Interest Rate: </label>
                         <input class="slider" type="range" id="mortgageRefinanceIntRate" value="0" min="0" max="50" oninput="document.getElementById('intRate').innerHTML = this.value + `%`" />
                         <label id="intRate"></label>
-                    </p>
+                      </div>
                 </div>
 
-                <h2>Refinancing Information</h2>
 
+
+                <h2>Refinancing Information</h2>
+                <!--Input fields for Refinance Information-->
+                <div class="container input-field">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 text-center">
+                            <form>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgageRefinanceIntRate2Input">Interest Rate to Refinance:</label>
+                                    <input type="text" class="form-control" id="mortgageRefinanceIntRate2Input" name="mortgageRefinanceIntRate2Input" oninput="document.getElementById('refinanceInterest').innerHTML = this.value + '$' ">$<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgageRefinanceNper2Input">Years to Refinance:</label>
+                                    <input type="text" class="form-control rate" id="mortgageRefinanceNper2Input" name="mortgageRefinanceNper2Input" oninput="document.getElementById('yearsRefinance').innerHTML = this.value + `%`">%<br><br>
+                                </div>
+                                <div class="card card-loan-input form-group">
+                                    <label for="mortgageRefinanceClosingCostInput">Closing Costs to Refinance:</label>
+                                    <input type="text" class="form-control months" id="mortgageRefinanceClosingCostInput" name="mortgageRefinanceClosingCostInput" oninput="document.getElementById('closingCost').innerHTML = this.value + ` months/years`">months/years<br><br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-row">
-                    <p>
+                    <div class="card card-loan form-row payment-slider">
                         <label>Interest Rate to Refinance: </label>
                         <input class="slider" type="range" id="mortgageRefinanceIntRate2" value="0" min="0" max="50" oninput="document.getElementById('refinanceInterest').innerHTML = this.value + '%'" />
                         <label id="refinanceInterest"></label>
-                    </p>
+                    </div>
                 </div>
                 <div class="form-row">
-                    <p>
+                    <div class="card card-loan form-row payment-slider">
                         <label>Years to Refinance: </label>
                         <input class="slider" type="range" id="mortgageRefinanceNper2" value="0" min="0" max="50" oninput="document.getElementById('yearsRefinance').innerHTML = this.value + ' years'" />
                         <label id="yearsRefinance"></label>
-                    </p>
+                    </div>
                 </div>
                 <div class="form-row">
-                    <p>
+                    <div class="card card-loan form-row payment-slider">
                         <label>Closing Costs to Refinance: </label>
                         <input class="slider" type="range" id="mortgageRefinanceClosingCost" value="0" min="0" max="50000" oninput="document.getElementById('closingCost').innerHTML = '$' + this.value" />
                         <label id="closingCost"></label>
                         <span class="small">If you are unsure, multiply your current balance owed by 0.3.</span>
-                    </p>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="full-wrap">

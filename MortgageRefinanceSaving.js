@@ -120,3 +120,20 @@ $('.refinanceCalc').on('click', function() {
         options: {}
     });
 });
+
+
+
+//Toggle button
+$('.input-field').hide();
+
+$('#customSwitch3').click(function() {
+    if ($(this).is(':checked')) {
+        console.log('switch again');
+        $('.payment-slider').hide();
+        $('.input-field').show();
+    } else {
+        console.log('switch');
+        $('.payment-slider').show();
+        $('.input-field').hide();
+    }
+});

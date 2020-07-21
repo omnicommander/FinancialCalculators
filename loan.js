@@ -173,7 +173,7 @@ $('.calc-button').on('click', function() {
 });
 
 
-
+//Toggle button
 $('.input-field').hide();
 
 $('#customSwitch1').click(function() {
@@ -188,6 +188,8 @@ $('#customSwitch1').click(function() {
     }
 });
 
+
+//reset fields
 function resetDesiredPayment() {
     document.getElementById('loanAffordAmount').value = 0;
     document.getElementById('loanAffordMonths').value = 0;
