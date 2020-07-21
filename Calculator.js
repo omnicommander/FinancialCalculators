@@ -15,30 +15,30 @@
 //     return temparray = e.split(o), e = temparray.join(""), temparray = t.split(o), t = temparray.join(""), temparray = a.split(o), a = temparray.join(""), temparray = n.split(o), n = temparray.join(""), isNaN(e) ? (alert("Amount must be a number!"), $("#loanPaymentAmount").focus(), !1) : isNaN(t) ? (alert("Payment must be a number!"), $("#loanPaymentPayment").focus(), !1) : isNaN(a) ? (alert("Rate must be a number!"), $("#loanPaymentRate").focus(), !1) : isNaN(n) ? (alert("Length of Loan must be a number!"), $("#loanPaymentMonths").focus(), !1) : 0 != e && "" != e && 0 != t && "" != t ? (alert("Please clear either the loan payment or the loan amount to continue."), $("#loanPaymentAmount").focus(), !1) : 0 != e && "" != e || 0 != t && "" != t ? 0 == a || "" == a ? (alert("You must select a loan rate!"), $("#loanPaymentRate").focus(), !1) : (a /= 1200, 0 == n || "" == n ? (alert("You must provide the term of the loan!"), $("#loanPaymentMonths").focus(), !1) : ("1" == $("#loanPaymentFrequency").val() && (n *= 12), 0 == t || "" == t ? $("#loanPaymentPayment").val(parseInt(100 * (e * (a / (1 - Math.pow(1 + a, -n))) + .005)) / 100) : $("#loanPaymentAmount").val(parseInt(100 * (Math.pow(1 + a, -n) * (-t + Math.pow(1 + a, n) * t) / a + .005)) / 100), !1)) : (alert("You must select either the loan payment or the loan amount!"), $("#loanPaymentAmount").focus(), !1)
 // }
 //************CHECKS TO MAKE SURE ALL DATA IS INPUTTED AND DOES THE MATH***************
-var resets = document.querySelectorAll(".reset"),
-    inputs = document.querySelectorAll("input[type='number']"),
-    clearInputs = function() { inputs.forEach(function(e) { e.value = "" }) };
+// var resets = document.querySelectorAll(".reset"),
+//     inputs = document.querySelectorAll("input[type='number']"),
+//     clearInputs = function() { inputs.forEach(function(e) { e.value = "" }) };
 
-function singleDepositComputeForm() {
+// function singleDepositComputeForm() {
     
-    if (!(isNaN($("#singleDepositPrincipal").val()) || isNaN($("#singleDepositInterest").val()) || isNaN($("#singleDepositPayments").val()))) {
-        var e = parseInt($("#singleDepositPayments").val().replace(",", "")),
-            t = parseFloat($("#singleDepositInterest").val().replace(",", "")),
-            a = parseFloat($("#singleDepositPrincipal").val().replace(",", ""));
-        if (1 > e > 480) alert("Years to Accrue must be between 1 and 480");
-        else if (.001 > t > 99) alert("Interest rate must be between 0.001 and 99");
-        else if (1 > a > 1e7) alert("Principal must be between 1 and 10000000");
-        else {
-            var n = t;
-            n /= 100, n /= 12;
-            for (var o = a, r = 0; r < 12 * e; r++) o = o * n + 1 * o;
-            var l = o;
-            $("#singleDepositFv").text("$" + o.formatMoney(2, ".", ","));
-            var i = l - a;
-            $("#singleDepositTotalint").text("$" + i.formatMoney(2, ".", ","))
-        }
-    }
-}
+//     if (!(isNaN($("#singleDepositPrincipal").val()) || isNaN($("#singleDepositInterest").val()) || isNaN($("#singleDepositPayments").val()))) {
+//         var e = parseInt($("#singleDepositPayments").val().replace(",", "")),
+//             t = parseFloat($("#singleDepositInterest").val().replace(",", "")),
+//             a = parseFloat($("#singleDepositPrincipal").val().replace(",", ""));
+//         if (1 > e > 480) alert("Years to Accrue must be between 1 and 480");
+//         else if (.001 > t > 99) alert("Interest rate must be between 0.001 and 99");
+//         else if (1 > a > 1e7) alert("Principal must be between 1 and 10000000");
+//         else {
+//             var n = t;
+//             n /= 100, n /= 12;
+//             for (var o = a, r = 0; r < 12 * e; r++) o = o * n + 1 * o;
+//             var l = o;
+//             $("#singleDepositFv").text("$" + o.formatMoney(2, ".", ","));
+//             var i = l - a;
+//             $("#singleDepositTotalint").text("$" + i.formatMoney(2, ".", ","))
+//         }
+//     }
+// }
 
 function multipleDepositComputeForm() {
     if (console.log("!!"), !(isNaN($("#multipleDepositMoAdd").val()) || isNaN($("#multipleDepositInterest").val()) || isNaN($("#multipleDepositPayments").val())))

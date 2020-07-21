@@ -1,5 +1,5 @@
 function singleDepositComputeForm() {
-    if (!(isNaN($("#singleDepositPrincipal").val()) || isNaN($("#singleDepositInterest").val()) || isNaN($("#singleDepositPayments").val()))) {
+    if (console.log("!!"),!(isNaN($("#singleDepositPrincipal").val()) || isNaN($("#singleDepositInterest").val()) || isNaN($("#singleDepositPayments").val()))) {
         var e = parseInt($("#singleDepositPayments").val().replace(",", "")),
             t = parseFloat($("#singleDepositInterest").val().replace(",", "")),
             a = parseFloat($("#singleDepositPrincipal").val().replace(",", ""));

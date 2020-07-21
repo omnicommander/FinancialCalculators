@@ -765,16 +765,17 @@
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="payments">Years to Accrue:</label> 
-                        <input class="slider" type="range" id="singleDepositPayments" value="0" min="0" max="50" oninput="document.getElementById('singleDepoPay').innerHTML = this.value" />
+                        <input class="slider" type="range" id="singleDepositPayments" value="0" min="1" max="480" oninput="document.getElementById('singleDepoPay').innerHTML = this.value" />
                         <label id="singleDepoPay"></label>
                     </div>
                     </div>
                     <div class="form-row">
                         <div class="full-wrap">
-                            <input class="compute calc-button btn btn-success futureValCalc" type="button" class="calc-button" value="Compute" id="singleDepositCompute" />
+                            <input class="compute btn btn-success futureValCalc" type="button" value="Compute" id="singleDepositCompute" />
                             <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
                         </div>
                     </div>
+                    </form>
                     <hr />
                     <div class="form-row result1">
                         <label for="fv">Future Value:</label>
