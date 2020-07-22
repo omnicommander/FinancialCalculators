@@ -18,7 +18,6 @@ function multipleDepositComputeForm() {
     else alert("Please enter the Interest Rate.")
 }
 
-
 //********** SAVINGS GRAPH ***********
 
 $('.savingsCalc').on('click', function() {
