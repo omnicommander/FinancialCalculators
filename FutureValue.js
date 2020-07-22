@@ -32,7 +32,7 @@ $('.futureValCalc').on('click', function() {
     var accrueArray = new Array();
     var futValArray = new Array();
     var intEarnedArray = new Array();
-    for (var i = 0; i < yearsAccrue; i++) {
+    for (var i = 0; i < yearAccrue; i++) {
         depositArray[i] = deposit;
         accrueArray[i] = yearAccrue;
         futValArray[i] = futureValue;
