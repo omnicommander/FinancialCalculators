@@ -1,3 +1,7 @@
+
+
+
+
 function validateFormLoanAfford() {
     console.log("clicked")
         // This function checks for empty required fields
