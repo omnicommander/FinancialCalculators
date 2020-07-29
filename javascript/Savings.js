@@ -1,3 +1,5 @@
+///Multiple Deposit Calculator
+
 function multipleDepositComputeForm() {
     if (console.log("!!"), !(isNaN($("#multipleDepositMoAdd").val()) || isNaN($("#multipleDepositInterest").val()) || isNaN($("#multipleDepositPayments").val())))
         if ("" != $("#multipleDepositInterest").val())
@@ -116,3 +118,19 @@ $('#customSwitch5').click(function() {
         $('.input-field').hide();
     }
 });
+
+
+
+
+//reset fields
+function resetSavings() {
+    console.log("clicked yo")
+    document.getElementById('multipleDepositPrincipal').value = 0;
+    document.getElementById('multipleDepositMoAdd').value = 0;
+    document.getElementById('multipleDepositInterest').value = 0;
+    document.getElementById('multipleDepositPayments').value = 0;
+    document.getElementById('multiPrincipal').innerHTML = '$0';
+    document.getElementById('multiDepositMonthly').innerHTML = '$0';
+    document.getElementById('multiDepoInt').innerHTML = '0%';
+    document.getElementById('multiDepoPay').innerHTML = '0 years';
+}

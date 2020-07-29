@@ -1,3 +1,5 @@
+///Single Deposit Calculator
+
 function singleDepositComputeForm() {
     if (console.log("!!"),!(isNaN($("#singleDepositPrincipal").val()) || isNaN($("#singleDepositInterest").val()) || isNaN($("#singleDepositPayments").val()))) {
         var e = parseInt($("#singleDepositPayments").val().replace(",", "")),
@@ -105,3 +107,16 @@ $('#customSwitch6').click(function() {
         $('.input-field').hide();
     }
 });
+
+
+
+//reset fields
+function resetFutureValue(){
+    console.log("clicked yo")
+    document.getElementById('singleDepositPrincipal').value = 0;
+    document.getElementById('singleDepositInterest').value = 0;
+    document.getElementById('singleDepositPayments').value = 0;
+    document.getElementById('singleDepoPrincipal').innerHTML = '$0';
+    document.getElementById('singleDepoInt').innerHTML = '0%';
+    document.getElementById('singleDepoPay').innerHTML = '0 years';
+}

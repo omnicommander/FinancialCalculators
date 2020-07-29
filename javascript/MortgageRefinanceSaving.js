@@ -39,6 +39,31 @@ function mortgageRefinanceComputeForm() {
     else alert("Please enter the amount of your mortgage payment.")
 }
 
+$('#mortgageRefinanceCompute').bind('click', function () {
+    mortgageRefinanceComputeForm()
+  }),
+  (Number.prototype.formatMoney = function (e, t, a) {
+    var n = this,
+      o =
+        ((e = isNaN((e = Math.abs(e))) ? 2 : e),
+        (t = void 0 == t ? ',' : t),
+        (a = void 0 == a ? '.' : a),
+        n < 0 ? '-' : ''),
+      r = parseInt((n = Math.abs(+n || 0).toFixed(e))) + '',
+      l = (l = r.length) > 3 ? l % 3 : 0
+    return (
+      o +
+      (l ? r.substr(0, l) + a : '') +
+      r.substr(l).replace(/(\d{3})(?=\d)/g, '$1' + a) +
+      (e
+        ? t +
+          Math.abs(n - r)
+            .toFixed(e)
+            .slice(2)
+        : '')
+    )
+  })
+
 //********** MORTGAGE REFINANCE GRAPH ***********
 
 $('.refinanceCalc').on('click', function() {
@@ -137,3 +162,21 @@ $('#customSwitch3').click(function() {
         $('.input-field').hide();
     }
 });
+
+
+//reset fields
+function resetCurrentMortgage() {
+    console.log("clicked yo")
+    document.getElementById('mortgageRefinancePayment').value = 0;
+    document.getElementById('mortgageRefinancePrincipal').value = 0;
+    document.getElementById('mortgageRefinanceIntRate').value = 0;
+    document.getElementById('mortgageRefinanceIntRate2').value = 0;
+    document.getElementById('mortgageRefinanceNper2').value = 0;
+    document.getElementById('mortgageRefinanceClosingCost').value = 0;
+    document.getElementById('principal').innerHTML = '$0';
+    document.getElementById('monthlyPayment').innerHTML = '$0';
+    document.getElementById('intRate').innerHTML = '0%';
+    document.getElementById('refinanceInterest').innerHTML = '0%';
+    document.getElementById('yearsRefinance').innerHTML = '0 years';
+    document.getElementById('closingCost').innerHTML = '$0';
+}

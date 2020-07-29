@@ -1,3 +1,5 @@
+//Biweekly
+
 function mortgagePaymentcomputeForm() {
     if ("" != $("#mortgagePaymentPayment").val())
         if ("" != $("#mortgagePaymentPrincipal").val())
@@ -93,6 +95,9 @@ $('.biweeklyCalc').on('click', function() {
 });
 
 
+
+
+
 //Toggle button
 $('.input-field').hide();
 
@@ -109,6 +114,17 @@ $('#customSwitch4').click(function() {
 });
 
 
+
+//reset fields
+function resetBiWeeklyMortgage() {
+    console.log("clicked yo")
+    document.getElementById('mortgagePaymentPrincipal').value = 0;
+    document.getElementById('mortgagePaymentPayment').value = 0;
+    document.getElementById('mortgagePaymentIntRate').value = 0;
+    document.getElementById('mortPayPrinc').innerHTML = '$0';
+    document.getElementById('mortPayPay').innerHTML = '$0';
+    document.getElementById('mortPayIntRate').innerHTML = '0%';
+}
 
 
 

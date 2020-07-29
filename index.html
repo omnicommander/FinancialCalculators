@@ -140,7 +140,7 @@
                         <div class="col-md-10">
                             <div class="card card-loan form-row payment-slider">
                                 <label>Desired Payment:</label>
-                                <input class="slider" type="range" id="loanAffordPayment" value="50" min="0" max="100000" oninput="document.getElementById('dPayment').innerHTML = this.value + '$' " />
+                                <input class="slider" type="range" id="loanAffordPayment" value="50" min="0" max="100000" oninput="document.getElementById('dPayment').innerHTML = '$' + this.value  " />
                                 <label id="dPayment"></label>
                             </div>
                             <div class="card card-loan form-row payment-slider">
@@ -425,7 +425,7 @@
                 <div class="form-row">
                     <div class="full-wrap">
                         <input class="compute calc-button btn btn-success refinanceCalc" type="button" class="calc-button" value="Compute" onclick=drawGraph() type="button" id="mortgageRefinanceCompute" />
-                        <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
+                        <input type="button" value="Reset" class="calc-button btn btn-warning reset" onclick="resetCurrentMortgage()" />
                     </div>
                 </div>
                 <hr />
@@ -554,7 +554,7 @@
                 <div class="form-row">
                     <div class="full-wrap">
                         <input class="compute calc-button btn btn-success biweeklyCalc" type="button" class="calc-button" value="Compute" type="button" id="mortgagePaymentCompute" />
-                        <input type="button" id="reset" value="Reset" class="calc-button btn btn-warning reset" />
+                        <input type="button" value="Reset" class="calc-button btn btn-warning reset" onclick="resetBiWeeklyMortgage()" />
                     </div>
                 </div>
                 <hr />
@@ -645,35 +645,35 @@
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="principal">Initial Investment (optional):</label>
-                        <input class="slider" type="range" id="multipleDepositPrincipal" value="0" min="0" max="50" oninput="document.getElementById('multiPrincipal').innerHTML = this.value" />
+                        <input class="slider" type="range" id="multipleDepositPrincipal" value="0" min="0" max="50" oninput="document.getElementById('multiPrincipal').innerHTML = '$' + this.value" />
                         <label id="multiPrincipal"></label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="moAdd">Amount to Add Monthly:</label>
-                        <input class="slider" type="range" id="multipleDepositMoAdd" value="0" min="0" max="50" oninput="document.getElementById('multiDepositMonthly').innerHTML = this.value" />
+                        <input class="slider" type="range" id="multipleDepositMoAdd" value="0" min="0" max="50" oninput="document.getElementById('multiDepositMonthly').innerHTML = '$' + this.value" />
                         <label id="multiDepositMonthly"></label>
                     </div>
                     </div>
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="interest">Annual Interest Rate:</label> &nbsp;
-                        <input class="slider" type="range" id="multipleDepositInterest" value="0" min="0" max="50" oninput="document.getElementById('multiDepoInt').innerHTML = this.value" />
+                        <input class="slider" type="range" id="multipleDepositInterest" value="0" min="0" max="50" oninput="document.getElementById('multiDepoInt').innerHTML = this.value + '%' " />
                         <label id="multiDepoInt"></label>
                     </div>
                     </div>
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="payments">Years to Accrue:</label> &nbsp;
-                        <input class="slider" type="range" id="multipleDepositPayments" value="0" min="0" max="50" oninput="document.getElementById('multiDepoPay').innerHTML = this.value" />
+                        <input class="slider" type="range" id="multipleDepositPayments" value="0" min="0" max="50" oninput="document.getElementById('multiDepoPay').innerHTML = this.value + 'years' " />
                         <label id="multiDepoPay"></label>
                     </div>
                     </div>
                     <div class="form-row">
                         <div class="full-wrap">
                             <input class="compute calc-button btn btn-success savingsCalc" type="button" class="calc-button" value="Compute" type="button" id="multipleDepositCompute" />
-                            <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
+                            <input type="button" value="Reset" class="calc-button btn btn-warning reset" onclick="resetSavings()" />
                         </div>
                     </div>
                 </form>
@@ -704,7 +704,7 @@
         <div class="modal-dialog" role="document"></div>
         <div class="modal-content ">
             <div class="modal-header card card-header">
-                <h5 class="modal-title" id="modalTitle6">Savings Calculator</h5>
+                <h5 class="modal-title" id="modalTitle6">Future Value Calculator</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -751,28 +751,28 @@
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="principal">Deposit Amount:</label>
-                        <input class="slider" type="range" id="singleDepositPrincipal" value="0" min="0" max="50" oninput="document.getElementById('singleDepoPrincipal').innerHTML = this.value" />
+                        <input class="slider" type="range" id="singleDepositPrincipal" value="0" min="0" max="50" oninput="document.getElementById('singleDepoPrincipal').innerHTML = '$' + this.value" />
                         <label id="singleDepoPrincipal"></label>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="interest">Annual Interest Rate:</label> 
-                        <input class="slider" type="range" id="singleDepositInterest" value="0" min="0" max="50" oninput="document.getElementById('singleDepoInt').innerHTML = this.value" />
+                        <input class="slider" type="range" id="singleDepositInterest" value="0" min="0" max="50" oninput="document.getElementById('singleDepoInt').innerHTML = this.value + '%' " />
                         <label id="singleDepoInt"></label>
                     </div>
                     </div>
                     <div class="form-row">
                         <div class="card card-loan form-row payment-slider">
                         <label for="payments">Years to Accrue:</label> 
-                        <input class="slider" type="range" id="singleDepositPayments" value="0" min="1" max="480" oninput="document.getElementById('singleDepoPay').innerHTML = this.value" />
+                        <input class="slider" type="range" id="singleDepositPayments" value="0" min="1" max="480" oninput="document.getElementById('singleDepoPay').innerHTML = this.value + 'years' " />
                         <label id="singleDepoPay"></label>
                     </div>
                     </div>
                     <div class="form-row">
                         <div class="full-wrap">
                             <input class="compute btn btn-success futureValCalc" type="button" value="Compute" id="singleDepositCompute" />
-                            <input type="button" value="Reset" class="calc-button btn btn-warning reset" />
+                            <input type="button" value="Reset" class="calc-button btn btn-warning reset" onclick="resetFutureValue()" />
                         </div>
                     </div>
                     </form>
@@ -795,15 +795,13 @@
     </div>
     </div>
 
-    <script src="Loan.js" type="text/javascript"></script>
-    <script src="Payment.js" type="text/javascript"></script>
-    <script src="MortgageRefinanceSaving.js" type="text/javascript"></script>
-    <script src="BiweeklyMortgagePayment.js" type="text/javascript"></script>
-    <script src="Savings.js" type="text/javascript"></script>
-    <script src="FutureValue.js" type="text/javascript"></script>
-    <script src="main.js" type="text/javascript"></script>
-    <script src="Validation.js" type="text/javascript"></script>
-    <script src="Calculator.js" type="text/javascript"></script>
+    <script src="./javascript/Loan.js" type="text/javascript"></script>
+    <script src="./javascript/Payment.js" type="text/javascript"></script>
+    <script src="./javascript/MortgageRefinanceSaving.js" type="text/javascript"></script>
+    <script src="./javascript/BiweeklyMortgagePayment.js" type="text/javascript"></script>
+    <script src="./javascript/Savings.js" type="text/javascript"></script>
+    <script src="./javascript/FutureValue.js" type="text/javascript"></script>
+    <script src="./javascript/Calculator.js" type="text/javascript"></script>
 </body>
 
 </html>
